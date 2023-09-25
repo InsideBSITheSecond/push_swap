@@ -23,7 +23,7 @@ $(NAME) : libft.a $(SRCS) $(INCLS)
 
 # compile main program and run it
 exe : $(NAME)
-	./$(NAME) 0 4 8 15 16 23 0 2 42
+	./$(NAME) 0 4 8 15 16 23 42 69 420
 
 dep : libft.a
 	
@@ -44,3 +44,8 @@ clean :
 fclean : clean
 	rm -f $(NAME) libft.a lib$(MLX).a
 	cd libft && $(MAKE) fclean
+
+all : $(NAME)
+
+# recompile
+re : fclean all

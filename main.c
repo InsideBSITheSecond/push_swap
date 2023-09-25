@@ -3,41 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 15:41:21 by llegrand          #+#    #+#             */
-/*   Updated: 2023/09/14 15:41:21 by llegrand         ###   ########.fr       */
+/*   Created: 2023/09/18 22:40:08 by insidebsi         #+#    #+#             */
+/*   Updated: 2023/09/18 22:40:08 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
-#include <stdio.h>
+#include "libft/includes/libft.h"
+#include "libft/includes/ft_printf.h"
+#include <stdio.h> 
 
-void	p(void *content)
+void print(void *lst)
 {
-	if (content)
-		printf("%i\n", content);
+	printf("%i | ", ((t_cdllist *)lst)->content);
 }
 
-t_list	parse(int argc, char **argv)
+void printall(void *lst)
 {
-	int i = 1;
-	t_list *a;
+	printf("\n          %p\n", (t_cdllist *)lst);
+	printf("%p - %i - %p\n", ((t_cdllist *)lst)->prev, ((t_cdllist *)lst)->content, ((t_cdllist *)lst)->next);
+}
 
-	while (i < argc)
+
+int main(int argc, char **argv)
+{
+	t_cdllist	*stack_a;
+	int			argiv;
+
+	if (argc >= 2)
 	{
-		if (!a)
-			a = ft_lstnew(ft_atoi(argv[i]));
-		else
-			ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i])));
-		printf("a%i:%i\n", i, ft_atoi(argv[i]));
-		i++;
+		argiv = atoi(argv[1]);
+		stack_a = ft_cdllnew(argiv);
+		for (int i = 2; i <= argc - 1; i++)
+		{
+			argiv = atoi(argv[i]);
+			if (!ft_cdllfind(stack_a, argiv))
+				ft_cdlladd_front(stack_a, ft_cdllnew(argiv));
+			else
+				return (ft_printf("[ERROR]: duplicate parameters...\n"));
+		}
 	}
-	printf("\nsize: %i\n\n", ft_lstsize(a));
-	ft_lstiter(a, p);
-}
-
-int	main(int argc, char **argv)
-{
-	parse(argc, argv);
+	ft_cdlliter(stack_a, print);
+	//ft_cdlliter(stack_a, printall);
+	return (0);
 }
