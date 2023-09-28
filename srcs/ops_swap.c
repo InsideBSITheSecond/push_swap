@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 15:39:58 by llegrand          #+#    #+#             */
-/*   Updated: 2023/09/14 15:39:58 by llegrand         ###   ########.fr       */
+/*   Created: 2023/09/28 15:47:32 by llegrand          #+#    #+#             */
+/*   Updated: 2023/09/28 15:47:32 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "../libft/includes/ft_printf.h"
-#include <stdlib.h>
+#include "../includes/pushswap.h"
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+void	sa(t_cdllist *a_tail)
+{
+	t_cdllist	*a_head = a_tail->next;
+	a_tail
 
-#endif
+}
+
+void	sb(t_cdllist *b_tail)
+{
+
+}
+
+void	ss(t_cdllist *a_tail, t_cdllist *b_tail)
+{
+	sa(a_tail);
+	sb(b_tail);
+}

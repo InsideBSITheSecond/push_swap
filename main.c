@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
-#include "libft/includes/ft_printf.h"
+#include "includes/pushswap.h"
 #include <stdio.h> 
 
 void print(void *lst)
@@ -25,26 +24,23 @@ void printall(void *lst)
 	printf("%p - %i - %p\n", ((t_cdllist *)lst)->prev, ((t_cdllist *)lst)->content, ((t_cdllist *)lst)->next);
 }
 
+void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
+{
+	
+}
+
 
 int main(int argc, char **argv)
 {
 	t_cdllist	*stack_a;
-	int			argiv;
+	t_cdllist	*stack_b;
 
-	if (argc >= 2)
-	{
-		argiv = atoi(argv[1]);
-		stack_a = ft_cdllnew(argiv);
-		for (int i = 2; i <= argc - 1; i++)
-		{
-			argiv = atoi(argv[i]);
-			if (!ft_cdllfind(stack_a, argiv))
-				ft_cdlladd_front(stack_a, ft_cdllnew(argiv));
-			else
-				return (ft_printf("[ERROR]: duplicate parameters...\n"));
-		}
-	}
-	ft_cdlliter(stack_a, print);
-	//ft_cdlliter(stack_a, printall);
+	stack_a = parse(argc, argv);
+	if (!stack_a)
+		ft_printf("[ERROR]: parsing error\n");
+	printf("list of size %i has been given\n\n", ft_cdllsize(stack_a));
+	ft_cdlliter(stack_a, print); printf("\n");
+	ft_cdlldrop(stack_a);
+	ft_printf("size: %i", ft_cdllsize(stack_a));
 	return (0);
 }

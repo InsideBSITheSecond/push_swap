@@ -14,8 +14,8 @@ CC := gcc
 CCARGS := -g3  -L. -lft #-Wall -Wextra -Werror
 
 NAME := push_swap
-SRCS := main.c
-INCLS := includes/push_swap.h
+SRCS := main.c srcs/parsing.c
+INCLS := includes/pushswap.h
 
 # main program
 $(NAME) : libft.a $(SRCS) $(INCLS)
