@@ -12,12 +12,28 @@
 
 #include "../includes/pushswap.h"
 
-void	pa(t_cdllist *a_tail, t_cdllist *b_tail)
+void	pa(t_cdllist **a_tail, t_cdllist *b_tail)
 {
+	t_cdllist	*tmp;
 
+	tmp = ft_cdllnew(b_tail->next->content);
+	ft_cdlldelone(b_tail->next);
+	if (*a_tail)
+		ft_cdlladd_front(*a_tail, tmp);
+	else
+		*a_tail = tmp;
+	ft_printf("exec: pa\n");
 }
 
-void	pb(t_cdllist *a_tail, t_cdllist *b_tail)
+void	pb(t_cdllist *a_tail, t_cdllist **b_tail)
 {
+	t_cdllist	*tmp;
 
+	tmp = ft_cdllnew(a_tail->next->content);
+	ft_cdlldelone(a_tail->next);
+	if (*b_tail)
+		ft_cdlladd_front(*b_tail, tmp);
+	else
+		*b_tail = tmp;
+	ft_printf("exec: pb\n");
 }

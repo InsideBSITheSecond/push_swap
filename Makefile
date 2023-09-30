@@ -10,11 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
+# problems with push command when stack is 1 node long (prob come from delone)
+
 CC := gcc
 CCARGS := -g3  -L. -lft #-Wall -Wextra -Werror
 
 NAME := push_swap
-SRCS := main.c srcs/parsing.c
+SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c
 INCLS := includes/pushswap.h
 
 # main program
@@ -23,7 +25,7 @@ $(NAME) : libft.a $(SRCS) $(INCLS)
 
 # compile main program and run it
 exe : $(NAME)
-	./$(NAME) 0 4 8 15 16 23 42 69 420
+	./$(NAME) 123 234 345 456 567 678 789
 
 dep : libft.a
 	
