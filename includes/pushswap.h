@@ -28,7 +28,9 @@ void	sa(t_cdllist *a_tail, int silent);
 void	sb(t_cdllist *a_tail, int silent);
 void	ss(t_cdllist *a_tail, t_cdllist *b_tail);
 
-void	pa(t_cdllist **a_tail, t_cdllist *b_tail);
-void	pb(t_cdllist *a_tail, t_cdllist **b_tail);
+void	pa(t_cdllist **a_tail, t_cdllist **b_tail);
+void	pb(t_cdllist **a_tail, t_cdllist **b_tail);
+
+void bruh(void *bruh);
 
 #endif

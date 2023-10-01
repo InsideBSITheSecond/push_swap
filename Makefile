@@ -15,6 +15,9 @@
 CC := gcc
 CCARGS := -g3  -L. -lft #-Wall -Wextra -Werror
 
+VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
+PSARG := 123 234 345 456 567 678 789
+
 NAME := push_swap
 SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c
 INCLS := includes/pushswap.h
@@ -25,7 +28,7 @@ $(NAME) : libft.a $(SRCS) $(INCLS)
 
 # compile main program and run it
 exe : $(NAME)
-	./$(NAME) 123 234 345 456 567 678 789
+	./$(NAME) $(PSARG)
 
 dep : libft.a
 	
@@ -44,10 +47,13 @@ clean :
 
 # full clean
 fclean : clean
-	rm -f $(NAME) libft.a lib$(MLX).a
+	rm -f $(NAME) libft.a
 	cd libft && $(MAKE) fclean
 
 all : $(NAME)
 
 # recompile
 re : fclean all
+
+vg : ${NAME}
+	valgrind $(VGARG) ./$(NAME) $(PSARG)

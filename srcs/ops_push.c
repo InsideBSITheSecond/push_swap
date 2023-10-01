@@ -12,12 +12,15 @@
 
 #include "../includes/pushswap.h"
 
-void	pa(t_cdllist **a_tail, t_cdllist *b_tail)
+void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	t_cdllist	*tmp;
 
-	tmp = ft_cdllnew(b_tail->next->content);
-	ft_cdlldelone(b_tail->next);
+	tmp = ft_cdllnew((*b_tail)->next->content);
+	if (ft_cdllsize(*b_tail) == 1)
+		ft_cdlldrop(b_tail, bruh);
+	else
+		ft_cdlldelone((*b_tail)->next, bruh);
 	if (*a_tail)
 		ft_cdlladd_front(*a_tail, tmp);
 	else
@@ -25,12 +28,15 @@ void	pa(t_cdllist **a_tail, t_cdllist *b_tail)
 	ft_printf("exec: pa\n");
 }
 
-void	pb(t_cdllist *a_tail, t_cdllist **b_tail)
+void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	t_cdllist	*tmp;
 
-	tmp = ft_cdllnew(a_tail->next->content);
-	ft_cdlldelone(a_tail->next);
+	tmp = ft_cdllnew((*a_tail)->next->content);
+	if (ft_cdllsize(*a_tail) == 1)
+		ft_cdlldrop(a_tail, bruh);
+	else
+		ft_cdlldelone((*a_tail)->next, bruh);
 	if (*b_tail)
 		ft_cdlladd_front(*b_tail, tmp);
 	else
