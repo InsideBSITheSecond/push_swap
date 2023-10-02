@@ -15,13 +15,13 @@
 
 void print(void *lst)
 {
-	printf("%i | ", ((t_cdllist *)lst)->content);
+	printf("%i | ", (int)(((t_cdllist *)lst)->content));
 }
 
 void printall(void *lst)
 {
 	printf("\n          %p\n", (t_cdllist *)lst);
-	printf("%p - %i - %p\n", ((t_cdllist *)lst)->prev, ((t_cdllist *)lst)->content, ((t_cdllist *)lst)->next);
+	printf("%p - %i (%i) - %p\n", ((t_cdllist *)lst)->prev, (int)(((t_cdllist *)lst)->content), (int)(((t_cdllist *)lst)->index), ((t_cdllist *)lst)->next);
 }
 
 void bruh(void *bruh)
@@ -52,7 +52,12 @@ void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail, int cooldown)
 	printf("stack A: | "); ft_cdlliter(a_tail, print); printf("\n");
 	printf("stack B: | "); ft_cdlliter(b_tail, print); printf("\n\n");
 	sleep(cooldown);
-	system("clear"); 
+	//system("clear"); 
+}
+
+void	getindexes(t_cdllist **tail)
+{
+	
 }
 
 int main(int argc, char **argv)
@@ -60,14 +65,15 @@ int main(int argc, char **argv)
 	t_cdllist	*stack_a;
 	t_cdllist	*stack_b;
 
-	system("clear"); 
+	//system("clear"); 
 	stack_a = parse(argc, argv);
 	stack_b = NULL;
 	if (!stack_a)
 		ft_printf("[ERROR]: parsing error\n");
+
 	printf("list of size %i has been given\n\n", ft_cdllsize(stack_a));
 	sleep(1);
-	system("clear");
+	//system("clear");
 	printf("current stacks:\n");
 	stackdisplay(stack_a, stack_b, 1);
 	pb(&stack_a, &stack_b);
@@ -86,15 +92,15 @@ int main(int argc, char **argv)
 	stackdisplay(stack_a, stack_b, 1);
 	rb(&stack_b, 0);
 	stackdisplay(stack_a, stack_b, 1);
-	/*pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);*/
 
 	printf("\n\n================\ncomplete stack dumps:\n================\nstack a:");
 	ft_cdlliter(stack_a, printall);
 	printf("\n\n================\nstack b:");
 	ft_cdlliter(stack_b, printall);
-
 	ft_cdlldrop(&stack_a, bruh);
 	ft_cdlldrop(&stack_b, bruh);
+
 	return (0);
 }
+
+

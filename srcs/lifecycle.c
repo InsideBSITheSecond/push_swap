@@ -11,14 +11,3 @@
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-
-void	cleanup(t_state *vars)
-{
-
-}
-
-void	suicide(int retval, char *reason, t_state *vars)
-{
-	ft_printf("Program exited: %s\nreturn code: %i\n", reason, retval);
-	exit(retval);
-}

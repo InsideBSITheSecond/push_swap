@@ -17,11 +17,13 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct	s_state{
-	t_cdllist	stack_a;
-	t_cdllist	stack_b;
-
-}				t_state;
+typedef struct s_stack
+{
+	void		*content;
+	int			index;
+	t_cdllist	*next;
+	t_cdllist	*prev;
+}				t_stack;
 
 t_cdllist	*parse(int argc, char **argv);
 
