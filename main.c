@@ -29,7 +29,7 @@ void bruh(void *bruh)
 	return ;
 }
 
-void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail, int cooldown)
+void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
 {
 	/*t_cdllist	*a_head = a_tail->next;
 	t_cdllist	*b_head = b_tail->next;
@@ -51,7 +51,7 @@ void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail, int cooldown)
 	}*/
 	printf("stack A: | "); ft_cdlliter(a_tail, print); printf("\n");
 	printf("stack B: | "); ft_cdlliter(b_tail, print); printf("\n\n");
-	sleep(cooldown);
+	sleep(SLEEP);
 	//system("clear"); 
 }
 
@@ -75,23 +75,23 @@ int main(int argc, char **argv)
 	sleep(1);
 	//system("clear");
 	printf("current stacks:\n");
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 	rb(&stack_b, 0);
-	stackdisplay(stack_a, stack_b, 1);
+	stackdisplay(stack_a, stack_b);
 
 	printf("\n\n================\ncomplete stack dumps:\n================\nstack a:");
 	ft_cdlliter(stack_a, printall);
@@ -100,6 +100,7 @@ int main(int argc, char **argv)
 	ft_cdlldrop(&stack_a, bruh);
 	ft_cdlldrop(&stack_b, bruh);
 
+	printf("UwU");
 	return (0);
 }
 

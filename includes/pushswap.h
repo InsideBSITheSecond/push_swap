@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+# ifndef SLEEP
+#  define SLEEP 1
+# endif
+
 typedef struct s_stack
 {
 	void		*content;

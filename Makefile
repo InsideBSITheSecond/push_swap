@@ -11,9 +11,10 @@
 # **************************************************************************** #
 
 # problems with push command when stack is 1 node long (prob come from delone)
+SLEEP := 1
 
 CC := gcc
-CCARGS := -g3  -L. -lft #-Wall -Wextra -Werror
+CCARGS := -g3  -L. -lft -D SLEEP=$(SLEEP) #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 123 234 345 456 567 678 789
