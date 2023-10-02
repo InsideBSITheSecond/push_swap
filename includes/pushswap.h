@@ -15,6 +15,7 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct	s_state{
 	t_cdllist	stack_a;
@@ -30,6 +31,10 @@ void	ss(t_cdllist *a_tail, t_cdllist *b_tail);
 
 void	pa(t_cdllist **a_tail, t_cdllist **b_tail);
 void	pb(t_cdllist **a_tail, t_cdllist **b_tail);
+
+void	ra(t_cdllist **a_tail, int silent);
+void	rb(t_cdllist **a_tail, int silent);
+void	rr(t_cdllist **a_tail, t_cdllist **b_tail);
 
 void bruh(void *bruh);
 

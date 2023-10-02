@@ -12,18 +12,22 @@
 
 #include "../includes/pushswap.h"
 
-void	ra(t_cdllist *a_tail)
+void	ra(t_cdllist **a_tail, int silent)
 {
-
+	*a_tail = (*a_tail)->next;
+	if (!silent)
+		ft_printf("exec: ra\n");
 }
 
-void	rb(t_cdllist *b_tail)
+void	rb(t_cdllist **b_tail, int silent)
 {
-
+	*b_tail = (*b_tail)->next;
+	if (!silent)
+		ft_printf("exec: rb\n");
 }
 
-void	rr(t_cdllist *a_tail, t_cdllist *b_tail)
+void	rr(t_cdllist **a_tail, t_cdllist **b_tail)
 {
-	ra(a_tail);
-	rb(b_tail);
+	ra(a_tail, 1);
+	rb(b_tail, 1);
 }

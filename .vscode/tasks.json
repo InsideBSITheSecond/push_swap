@@ -12,7 +12,7 @@
 				"-L${workspaceFolder}",
 				"-lft",
                 "-o",
-                "${fileDirname}/push_swap"
+                "${workspaceFolder}/push_swap"
             ],
             "options": {
                 "cwd": "${fileDirname}"

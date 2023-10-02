@@ -29,7 +29,7 @@ void bruh(void *bruh)
 	return ;
 }
 
-void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
+void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail, int cooldown)
 {
 	/*t_cdllist	*a_head = a_tail->next;
 	t_cdllist	*b_head = b_tail->next;
@@ -49,8 +49,10 @@ void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
 		if(b_head != b_tail)
 			b_head = b_head->next;
 	}*/
-	printf("stack A: | ");ft_cdlliter(a_tail, print); printf("\n");
-	printf("stack B: | ");ft_cdlliter(b_tail, print); printf("\n\n");
+	printf("stack A: | "); ft_cdlliter(a_tail, print); printf("\n");
+	printf("stack B: | "); ft_cdlliter(b_tail, print); printf("\n\n");
+	sleep(cooldown);
+	system("clear"); 
 }
 
 int main(int argc, char **argv)
@@ -58,31 +60,38 @@ int main(int argc, char **argv)
 	t_cdllist	*stack_a;
 	t_cdllist	*stack_b;
 
+	system("clear"); 
 	stack_a = parse(argc, argv);
 	stack_b = NULL;
 	if (!stack_a)
 		ft_printf("[ERROR]: parsing error\n");
 	printf("list of size %i has been given\n\n", ft_cdllsize(stack_a));
-	stackdisplay(stack_a, stack_b);
+	sleep(1);
+	system("clear");
+	printf("current stacks:\n");
+	stackdisplay(stack_a, stack_b, 1);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
+	stackdisplay(stack_a, stack_b, 1);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
+	stackdisplay(stack_a, stack_b, 1);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
+	stackdisplay(stack_a, stack_b, 1);
 	pb(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
-	pa(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
-	pa(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
-	pa(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
-	
-	pa(&stack_a, &stack_b);
-	stackdisplay(stack_a, stack_b);
+	stackdisplay(stack_a, stack_b, 1);
+	pb(&stack_a, &stack_b);
+	stackdisplay(stack_a, stack_b, 1);
+	pb(&stack_a, &stack_b);
+	stackdisplay(stack_a, stack_b, 1);
+	pb(&stack_a, &stack_b);
+	stackdisplay(stack_a, stack_b, 1);
+	rb(&stack_b, 0);
+	stackdisplay(stack_a, stack_b, 1);
+	/*pb(&stack_a, &stack_b);
+	stackdisplay(stack_a, stack_b, 1);*/
 
-	ft_cdlliter(stack_a, printall);printf("\n\n================\n\n");
+	printf("\n\n================\ncomplete stack dumps:\n================\nstack a:");
+	ft_cdlliter(stack_a, printall);
+	printf("\n\n================\nstack b:");
 	ft_cdlliter(stack_b, printall);
 
 	ft_cdlldrop(&stack_a, bruh);

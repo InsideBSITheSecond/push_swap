@@ -19,7 +19,7 @@ VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track
 PSARG := 123 234 345 456 567 678 789
 
 NAME := push_swap
-SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c
+SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c
 INCLS := includes/pushswap.h
 
 # main program
