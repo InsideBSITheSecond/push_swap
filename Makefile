@@ -12,6 +12,7 @@
 
 # problems with push command when stack is 1 node long (prob come from delone)
 SLEEP := 1
+UNAME := $(shell uname)
 
 CC := gcc
 CCARGS := -g3  -L. -lft -D SLEEP=$(SLEEP) #-Wall -Wextra -Werror
@@ -22,6 +23,13 @@ PSARG := 123 234 345 456 567 678 789
 NAME := push_swap
 SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c
 INCLS := includes/pushswap.h
+
+ifeq ($(UNAME), Linux)
+	CHECKER := checker_linux
+endif
+ifeq ($(UNAME), Darwin)
+	CHECKER := checker_mac
+endif
 
 # main program
 $(NAME) : libft.a $(SRCS) $(INCLS)
@@ -58,3 +66,14 @@ re : fclean all
 
 vg : ${NAME}
 	valgrind $(VGARG) ./$(NAME) $(PSARG)
+
+test : run_tests.sh $(CHECKER)
+	echo $(CHECKER)
+	./run_tests.sh
+
+checker_linux :
+	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
+
+checker_mac :
+	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
+	mv checker_Mac checker_mac
