@@ -10,7 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-# problems with push command when stack is 1 node long (prob come from delone)
+# need to make it so we stop creating new nodes in push operations
+# this can be done by creating: 
+#ft_cdllinsert_after(t_cdllist *node, t_cdllist *toinsert)
+#ft_cdllinsert_before(t_cdllist *node, t_cdllist *toinsert)
+#ft_cdllinsert_between(t_cdllist *prev, t_cdllist *next, t_cdllist *toinsert)
+
+
 SLEEP := 0
 UNAME := $(shell uname)
 
