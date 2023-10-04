@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+# need to support argc == 2 
 # need to make it so we stop creating new nodes in push operations
 # this can be done by creating: 
 #ft_cdllinsert_after(t_cdllist *node, t_cdllist *toinsert)
