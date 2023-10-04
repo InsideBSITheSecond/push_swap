@@ -20,19 +20,19 @@ void	sa(t_cdllist *a_tail, int silent)
 {
 	ft_cdllswap(a_tail);
 	if (!silent)
-		ft_printf("\nexec: sa\n");
+		ft_printf("sa\n");
 }
 
 void	sb(t_cdllist *b_tail, int silent)
 {
 	ft_cdllswap(b_tail);
 	if (!silent)
-		ft_printf("\nexec: sb\n");
+		ft_printf("sb\n");
 }
 
 void	ss(t_cdllist *a_tail, t_cdllist *b_tail)
 {
 	sa(a_tail, 1);
 	sb(b_tail, 1);
-	ft_printf("\nexec: ss\n");
+	ft_printf("ss\n");
 }

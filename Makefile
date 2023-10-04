@@ -18,10 +18,12 @@ CC := gcc
 CCARGS := -g3  -L. -lft -D SLEEP=$(SLEEP) #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
-PSARG := 123 234 345 456 567 678 789
+PSARG := 789 123 567 345 456 678 234
+PSARG := 231 789 123 567 345 925 456 678 234
+PSARG := 1 2 3 4 5 6 7 8 9 10
 
 NAME := push_swap
-SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c
+SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/radix.c
 INCLS := includes/pushswap.h
 
 ifeq ($(UNAME), Linux)

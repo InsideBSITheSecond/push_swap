@@ -44,4 +44,12 @@ void	rr(t_cdllist **a_tail, t_cdllist **b_tail);
 
 void bruh(void *bruh);
 
+void print(void *lst);
+void printall(void *lst);
+void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail);
+t_cdllist	*get_unindexed_min(t_cdllist *tail);
+void	init_index(t_cdllist *tail);
+int		check_base(char *base);
+void	ft_putnbr_base(int nbr, char *base);
+void radix(t_cdllist **stack_a, t_cdllist **stack_b);
 #endif

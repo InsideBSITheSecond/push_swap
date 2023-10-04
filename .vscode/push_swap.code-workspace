@@ -4,7 +4,12 @@
 			"path": ".."
 		}
 	],
-	"settings": {},
+	"settings": {
+		"files.associations": {
+			"libft.h": "c",
+			"printf.h": "c"
+		}
+	},
 	"extensions": {
 		"recommendations": [
 			"keyhr.42-c-format", 

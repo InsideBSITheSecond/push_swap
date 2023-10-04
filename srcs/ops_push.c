@@ -17,6 +17,7 @@ void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 	t_cdllist	*tmp;
 
 	tmp = ft_cdllnew((*b_tail)->next->content);
+	tmp->index = (*b_tail)->next->index;
 	if (ft_cdllsize(*b_tail) == 1)
 		ft_cdlldrop(b_tail, bruh);
 	else
@@ -25,7 +26,7 @@ void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 		ft_cdlladd_front(*a_tail, tmp);
 	else
 		*a_tail = tmp;
-	ft_printf("exec: pa\n");
+	ft_printf("pa\n");
 }
 
 void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
@@ -33,6 +34,7 @@ void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
 	t_cdllist	*tmp;
 
 	tmp = ft_cdllnew((*a_tail)->next->content);
+	tmp->index = (*a_tail)->next->index;
 	if (ft_cdllsize(*a_tail) == 1)
 		ft_cdlldrop(a_tail, bruh);
 	else
@@ -41,5 +43,5 @@ void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
 		ft_cdlladd_front(*b_tail, tmp);
 	else
 		*b_tail = tmp;
-	ft_printf("exec: pb\n");
+	ft_printf("pb\n");
 }
