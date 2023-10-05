@@ -31,25 +31,25 @@ typedef struct s_stack
 
 t_cdllist	*parse(int argc, char **argv);
 
-void	sa(t_cdllist *a_tail, int silent);
-void	sb(t_cdllist *a_tail, int silent);
-void	ss(t_cdllist *a_tail, t_cdllist *b_tail);
+void		sa(t_cdllist *a_tail, int silent);
+void		sb(t_cdllist *a_tail, int silent);
+void		ss(t_cdllist *a_tail, t_cdllist *b_tail);
 
-void	pa(t_cdllist **a_tail, t_cdllist **b_tail);
-void	pb(t_cdllist **a_tail, t_cdllist **b_tail);
+void		pa(t_cdllist **a_tail, t_cdllist **b_tail);
+void		pb(t_cdllist **a_tail, t_cdllist **b_tail);
 
-void	ra(t_cdllist **a_tail, int silent);
-void	rb(t_cdllist **a_tail, int silent);
-void	rr(t_cdllist **a_tail, t_cdllist **b_tail);
+void		ra(t_cdllist **a_tail, int silent);
+void		rb(t_cdllist **a_tail, int silent);
+void		rr(t_cdllist **a_tail, t_cdllist **b_tail);
 
-void bruh(void *bruh);
+void		bruh(void *bruh);
 
-void print(void *lst);
-void printall(void *lst);
-void stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail);
+void		print(void *lst);
+void		printall(void *lst);
+void		stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail);
 t_cdllist	*get_unindexed_min(t_cdllist *tail);
-void	init_index(t_cdllist *tail);
-int		check_base(char *base);
-void	ft_putnbr_base(int nbr, char *base);
-void radix(t_cdllist **stack_a, t_cdllist **stack_b);
+void		init_index(t_cdllist *tail);
+int			check_base(char *base);
+void		ft_putnbr_base(int nbr, char *base);
+void		radix(t_cdllist **stack_a, t_cdllist **stack_b);
 #endif

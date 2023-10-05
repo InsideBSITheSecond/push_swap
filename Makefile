@@ -25,9 +25,9 @@ CC := gcc
 CCARGS := -g3  -L. -lft -D SLEEP=$(SLEEP) #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
-PSARG := 789 123 567 345 456 678 234
-PSARG := 231 789 123 567 345 925 456 678 234
 PSARG := 1 2 3 4 5 6 7 8 9 10
+PSARG := 231 789 123 567 345 925 456 678 234
+PSARG := 789 123 567 345 456 678 234
 
 NAME := push_swap
 SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/radix.c
@@ -63,6 +63,7 @@ libft/Makefile :
 clean :
 	cd libft && $(MAKE) clean
 	rm -rf psv
+	rm -f $(CHECKER)
 
 vis :
 	git clone https://github.com/o-reo/push_swap_visualizer.git psv
@@ -86,9 +87,14 @@ test : run_tests.sh $(CHECKER)
 	echo $(CHECKER)
 	./run_tests.sh
 
+check : $(CHECKER) $(NAME)
+	./$(NAME) $(PSARG) | ./$(CHECKER) $(PSARG)
+
 checker_linux :
 	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
+	chmod +x $(CHECKER)
 
 checker_mac :
 	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
 	mv checker_Mac checker_mac
+	chmod +x $(CHECKER)
