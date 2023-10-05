@@ -62,6 +62,12 @@ libft/Makefile :
 # partial clean
 clean :
 	cd libft && $(MAKE) clean
+	rm -rf psv
+
+vis :
+	git clone https://github.com/o-reo/push_swap_visualizer.git psv
+	mkdir psv/build
+	cd psv/build && cmake .. && $(MAKE) && ./bin/visualizer
 
 # full clean
 fclean : clean
