@@ -6,17 +6,22 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:37:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/04 23:39:02 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/06 21:59:34 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+void bruh(void *bruh)
+{
+	return ;
+}
+
 void print(void *lst)
 {
-	ft_putnbr_base((int)(((t_cdllist *)lst)->index), "01");
+	ft_putnbr_base((int)(((t_cdllist *)lst)->content), "0123456789");
 	write(1, " | ", 3);
-	//printf("%i | ", (int)(((t_cdllist *)lst)->index));
+	//printf("%i | ", (int)(((t_cdllist *)lst)->content));
 }
 
 void printall(void *lst)

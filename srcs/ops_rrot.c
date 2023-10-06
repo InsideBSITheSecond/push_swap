@@ -15,14 +15,14 @@
 void	rra(t_cdllist **a_tail, int silent)
 {
 	*a_tail = (*a_tail)->prev;
-	if (!silent)
+	if (!silent && !SILENT)
 		ft_printf("rra\n");
 }
 
 void	rrb(t_cdllist **b_tail, int silent)
 {
 	*b_tail = (*b_tail)->prev;
-	if (!silent)
+	if (!silent && !SILENT)
 		ft_printf("rrb\n");
 }
 
@@ -30,6 +30,7 @@ void	rrr(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	rra(a_tail, 1);
 	rrb(b_tail, 1);
-	ft_printf("rrr\n");
+	if (!SILENT)
+		ft_printf("rrr\n");
 }
 

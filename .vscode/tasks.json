@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/main.c",
+                "${workspaceFolder}/checker.c",
 				"${workspaceFolder}/srcs/*.c",
 				"-L${workspaceFolder}",
 				"-lft",

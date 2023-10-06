@@ -11,12 +11,6 @@
 /* ************************************************************************** */
 
 #include "includes/pushswap.h"
-#include <stdio.h>
-
-void bruh(void *bruh)
-{
-	return ;
-}
 
 int main(int argc, char **argv)
 {
@@ -31,7 +25,7 @@ int main(int argc, char **argv)
 	radix(&stack_a, &stack_b);
 	
 	//stackdisplay(stack_a, stack_b);
-	//ft_cdlliter(stack_a, printall);
+	//ft_cdlliter(stack_a, print);
 	return (0);
 }
 

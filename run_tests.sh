@@ -1,21 +1,20 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    run_tests.sh                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/05 00:16:33 by insidebsi         #+#    #+#              #
-#    Updated: 2023/10/05 00:16:34 by insidebsi        ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#!/bin/bash
+#make -s fclean
+make -s dep
+make -j4 push_swap
+make -j4 SILENT=1 PRINTSTACK=1 checker
 
-#set -e
+#printf "\ntest 1: (0->250)*25\n"
+#RAND=$(python -c 'import random as r; print(*r.sample(range(0, 250), 25), sep=" ");')
+#echo ${RAND}
+#./push_swap ${RAND} | ./checker ${RAND}
+#printf "\n"
 
-make SLEEP=0
-cmd=(./push_swap 123 234 345 456 567 678 789)
-#cmd=(./push_swap dqzfabg)
+printf "\ntest 2: (-125->125)*25\n"
+RAND=$(python -c 'import random as r; print(*r.sample(range(-125, 125), 25), sep=" ");')
+echo ${RAND}
+./push_swap ${RAND} | ./checker ${RAND}
+printf "\n"
 
-if "${cmd[@]}" | grep -q 'pa'; then
-   echo "program execution ended"
-fi
+#RAND=$(python -c 'import random as r; print(*r.sample(range(-250, 0), 25), sep=" ");')
+#./push_swap ${RAND}
