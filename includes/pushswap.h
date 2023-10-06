@@ -14,11 +14,20 @@
 # define PUSHSWAP_H
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
+# include "../libft/includes/get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
 
 # ifndef SLEEP
 #  define SLEEP 1
+# endif
+
+# ifndef SILENT
+#  define SILENT 0
+# endif
+
+# ifndef PRINTSTACK
+#  define PRINTSTACK 0
 # endif
 
 typedef struct s_stack

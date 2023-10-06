@@ -18,19 +18,24 @@
 #ft_cdllinsert_between(t_cdllist *prev, t_cdllist *next, t_cdllist *toinsert)
 
 
-SLEEP := 0
+
+
+PRINTSTACK := 0
+SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -g3  -L. -lft -D SLEEP=$(SLEEP) #-Wall -Wextra -Werror
+CCARGS := -w -g3  -L. -lft -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
 PSARG := 231 789 123 567 345 925 456 678 234
 PSARG := 789 123 567 345 456 678 234
+PSARG := 789 -123 -567 345 234 456 -678
 
-NAME := push_swap
-SRCS := main.c srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/radix.c
+PS := push_swap
+CCHECKER := checker
+SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/radix.c
 INCLS := includes/pushswap.h
 
 ifeq ($(UNAME), Linux)
@@ -41,12 +46,15 @@ ifeq ($(UNAME), Darwin)
 endif
 
 # main program
-$(NAME) : libft.a $(SRCS) $(INCLS)
-	$(CC) $(SRCS) $(CCARGS) -o $(NAME)
+$(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
+	$(CC) push_swap.c $(SRCS) $(CCARGS) -o $(PS)
+
+$(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
+	$(CC) checker.c $(SRCS) $(CCARGS) -o $(CCHECKER)
 
 # compile main program and run it
-exe : $(NAME)
-	./$(NAME) $(PSARG)
+exe : $(PS) $(CCHECKER)
+	./$(PS) $(PSARG) | ./$(CCHECKER) $(PSARG)
 
 dep : libft.a
 	
@@ -63,7 +71,6 @@ libft/Makefile :
 clean :
 	cd libft && $(MAKE) clean
 	rm -rf psv
-	rm -f $(CHECKER)
 
 vis :
 	git clone https://github.com/o-reo/push_swap_visualizer.git psv
@@ -72,23 +79,19 @@ vis :
 
 # full clean
 fclean : clean
-	rm -f $(NAME) libft.a
+	rm -f $(PS) libft.a $(CHECKER) $(CCHECKER)
 	cd libft && $(MAKE) fclean
 
-all : $(NAME)
+all : $(PS) $(CCHECKER)
 
 # recompile
 re : fclean all
 
-vg : ${NAME}
+vg : ${PS}
 	valgrind $(VGARG) ./$(NAME) $(PSARG)
 
-test : run_tests.sh $(CHECKER)
-	echo $(CHECKER)
-	./run_tests.sh
-
-check : $(CHECKER) $(NAME)
-	./$(NAME) $(PSARG) | ./$(CHECKER) $(PSARG)
+ft_checker : $(CHECKER) $(PS)
+	./$(PS) $(PSARG) | ./$(CHECKER) $(PSARG)
 
 checker_linux :
 	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
@@ -98,3 +101,8 @@ checker_mac :
 	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
 	mv checker_Mac checker_mac
 	chmod +x $(CHECKER)
+
+
+
+rand :
+	

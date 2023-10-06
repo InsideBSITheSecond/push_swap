@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/05 04:01:10 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/06 20:28:00 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ void radix(t_cdllist **stack_a, t_cdllist **stack_b)
 				ra(stack_a, 0);
 			else
 				pb(stack_a, stack_b);
-			//stackdisplay(*stack_a, *stack_b);
 		}
 		while (ft_cdllsize(*stack_b) != -1)
 		{
 			pa(stack_a, stack_b);
-			//stackdisplay(*stack_a, *stack_b);
 		}
 	}
 }

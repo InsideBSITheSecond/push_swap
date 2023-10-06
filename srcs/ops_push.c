@@ -26,7 +26,8 @@ void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 		ft_cdlladd_front(*a_tail, tmp);
 	else
 		*a_tail = tmp;
-	ft_printf("pa\n");
+	if (!SILENT)
+		ft_printf("pa\n");
 }
 
 void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
@@ -43,5 +44,6 @@ void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
 		ft_cdlladd_front(*b_tail, tmp);
 	else
 		*b_tail = tmp;
-	ft_printf("pb\n");
+	if (!SILENT)
+		ft_printf("pb\n");
 }

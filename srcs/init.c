@@ -22,7 +22,7 @@ t_cdllist	*get_unindexed_min(t_cdllist *tail)
 		if (!min && head->index == -1)
 			min = head;
 		if (min)
-			if (min->content > head->content && head->index == -1)
+			if ((int)min->content > (int)head->content && head->index == -1)
 				min = head;
 		head = head->next;
 	}
