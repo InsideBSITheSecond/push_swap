@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	init_index(stack_a);
 	if (issorted(stack_a))
 	{
-		ft_cdlldrop(stack_a, bruh);
-		ft_cdlldrop(stack_b, bruh);
+		ft_cdlldrop(&stack_a, bruh);
+		ft_cdlldrop(&stack_b, bruh);
 	}
 	sort(&stack_a, &stack_b);
 	return (0);
