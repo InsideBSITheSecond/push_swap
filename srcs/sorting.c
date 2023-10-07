@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix.c                                            :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/06 20:28:00 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/07 16:49:03 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+void sort(t_cdllist **stack_a, t_cdllist **stack_b)
+{
+	if (ft_cdllsize(*stack_a) <= 5)
+		simple(stack_a, stack_b);
+	else
+		radix(stack_a, stack_b);
+}
+
+void simple(t_cdllist **stack_a, t_cdllist **stack_b)
+{
+	
+}
 
 void radix(t_cdllist **stack_a, t_cdllist **stack_b)
 {
