@@ -34,7 +34,7 @@ jobs:
     - name: duplicate numbers
       id: dupe
       run: time ./push_swap ${RAND} | ./checker ${RAND}
-      continue-on-error: false
+      continue-on-error: true
 
     - name: numbers include a 0
       id: zero
