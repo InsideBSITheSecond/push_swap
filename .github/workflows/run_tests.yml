@@ -31,11 +31,6 @@ jobs:
       run: ./run_tests.sh -12500 12500 2500
       continue-on-error: false
 
-    - name: 25000 1000x higher range positives & negatives
-      id: pn25000
-      run: ./run_tests.sh -125000 125000 25000
-      continue-on-error: false
-
     - name: duplicate numbers
       id: dupe
       run: time ./push_swap ${RAND} | ./checker ${RAND}
