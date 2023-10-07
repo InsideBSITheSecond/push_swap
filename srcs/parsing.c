@@ -38,4 +38,3 @@ t_cdllist	*parse(int argc, char **argv)
 	}
 	return (stack);
 }
-

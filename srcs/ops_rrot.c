@@ -33,4 +33,3 @@ void	rrr(t_cdllist **a_tail, t_cdllist **b_tail)
 	if (!SILENT)
 		ft_printf("rrr\n");
 }
-

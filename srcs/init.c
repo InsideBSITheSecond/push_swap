@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lifecycle.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2023/09/28 15:25:00 by llegrand          #+#    #+#             */
 /*   Updated: 2023/09/28 15:25:00 by llegrand         ###   ########.fr       */
 /*                                                                            */
@@ -14,10 +17,12 @@
 
 t_cdllist	*get_unindexed_min(t_cdllist *tail)
 {
-	t_cdllist *head = tail->next;
-	t_cdllist *min = NULL;
-	
-	while(head != tail)
+	t_cdllist	*head;
+	t_cdllist	*min;
+
+	head = tail->next;
+	min = NULL;
+	while (head != tail)
 	{
 		if (!min && head->index == -1)
 			min = head;
@@ -34,9 +39,10 @@ t_cdllist	*get_unindexed_min(t_cdllist *tail)
 
 void	init_index(t_cdllist *tail)
 {
-	int size = ft_cdllsize(tail);
+	int			size;
 	t_cdllist	*min;
 
+	size = ft_cdllsize(tail);
 	for (int i = 1; size >= i; i++)
 	{
 		min = get_unindexed_min(tail);

@@ -8,7 +8,8 @@
 		"files.associations": {
 			"libft.h": "c",
 			"printf.h": "c",
-			"pushswap.h": "c"
+			"pushswap.h": "c",
+			"source_location": "c"
 		}
 	},
 	"extensions": {

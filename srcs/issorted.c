@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:29:59 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 16:30:14 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/07 17:49:28 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	issorted(t_cdllist *tail)
 {
-	t_cdllist *head = tail->next;
-	int sorted = 1;
-	
+	t_cdllist	*head;
+	int			sorted;
+
+	head = tail->next;
+	sorted = 1;
 	while (head->next != tail)
 	{
 		if (!((int)head->content < (int)head->next->content))

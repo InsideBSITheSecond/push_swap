@@ -6,13 +6,13 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:37:00 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/04 23:39:20 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/07 17:48:15 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int		check_base(char *base)
+int	check_base(char *base)
 {
 	int	i;
 	int	z;
