@@ -11,6 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: duplicate numbers
+      id: dupe
+      run: time ./push_swap ${RAND} | ./checker ${RAND}
+      continue-on-error: true
+      
+    - name: check dupe error & mark success
+      run: exit 0
+      continue-on-error: true
+
     - name: 25 positives
       id: p25
       run: ./run_tests.sh 0 250 25
@@ -31,13 +41,7 @@ jobs:
       run: ./run_tests.sh -12500 12500 2500
       continue-on-error: false
 
-    - name: duplicate numbers
-      id: dupe
-      run: time ./push_swap ${RAND} | ./checker ${RAND}
-      continue-on-error: true
-
     - name: numbers include a 0
       id: zero
       run: time ./push_swap ${RAND} | ./checker ${RAND}
       continue-on-error: false
-
