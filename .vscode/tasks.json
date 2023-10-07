@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/checker.c",
+                "${workspaceFolder}/push_swap.c",
 				"${workspaceFolder}/srcs/*.c",
 				"-L${workspaceFolder}",
 				"-lft",

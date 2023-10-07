@@ -22,10 +22,13 @@ int main(int argc, char **argv)
 	if (!stack_a)
 		ft_printf("[ERROR]: parsing error\n");
 	init_index(stack_a);
-	radix(&stack_a, &stack_b);
-	
-	//stackdisplay(stack_a, stack_b);
-	//ft_cdlliter(stack_a, print);
+	if (issorted(stack_a))
+	{
+		ft_cdlldrop(stack_a, bruh);
+		ft_cdlldrop(stack_b, bruh);
+	}
+	sort(&stack_a, &stack_b);
+
 	return (0);
 }
 
