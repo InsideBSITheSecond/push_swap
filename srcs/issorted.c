@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   issorted.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:29:59 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 17:49:28 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/09 09:17:31 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ int	issorted(t_cdllist *tail)
 	t_cdllist	*head;
 	int			sorted;
 
-	head = tail->next;
+	head = NULL;
+	if (tail)
+		head = tail->next;
 	sorted = 1;
-	while (head->next != tail)
+	while (head && head->next != tail)
 	{
 		if (!((int)head->content < (int)head->next->content))
 			sorted = 0;
 		head = head->next;
 	}
-	if (!((int)head->content < (int)head->next->content))
-		sorted = 0;
+	if (head)
+		if (!((int)head->content < (int)head->next->content))
+			sorted = 0;
 	return (sorted);
 }

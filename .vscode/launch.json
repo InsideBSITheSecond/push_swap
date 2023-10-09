@@ -5,17 +5,17 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Launch",
+			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/push_swap",
-			"args": ["1", "0", "-567", "69", "456", "-678", "234", "69"],
+			"args": ["69", "1", "-9", "3", "-5", "5", "84",  "684",  "3"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
+			"MIMode": "lldb",
 			"preLaunchTask": "C/C++: gcc build active file",
-			"MIMode": "gdb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",
