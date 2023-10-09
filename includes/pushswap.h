@@ -64,5 +64,5 @@ void		radix(t_cdllist **stack_a, t_cdllist **stack_b);
 void		compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b);
 void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
 void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
-int	issorted(t_cdllist *tail);
+int			issorted(t_cdllist *tail);
 #endif
