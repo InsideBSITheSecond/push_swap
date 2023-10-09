@@ -56,6 +56,7 @@ exe : $(PS) $(CCHECKER)
 
 dep : libft.a
 	
+	
 # libft compilation
 libft.a : libft/Makefile
 	cd libft && $(MAKE) -j16
