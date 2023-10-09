@@ -6,5 +6,8 @@
 			"binaryArgs": []
 		}
 	],
-	"makefile.buildLog": "build.log"
+	"makefile.buildLog": "build.log",
+	"files.associations": {
+		"algorithm": "c"
+	}
 }

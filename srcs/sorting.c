@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 17:47:48 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/09 11:44:27 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	sort(t_cdllist **stack_a, t_cdllist **stack_b)
+void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	if (ft_cdllsize(*stack_a) <= 5)
-		simple(stack_a, stack_b);
-	else
+	//if (ft_cdllsize(*stack_a) <= 5)
+	//	simple(stack_a, stack_b);
+	//else
 		radix(stack_a, stack_b);
 }
 
 void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
 {
+	printf("let's pretend like we re sorting shit here... (argc < 5)\n");
 }
 
 void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
@@ -48,8 +49,6 @@ void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 				pb(stack_a, stack_b);
 		}
 		while (ft_cdllsize(*stack_b) != -1)
-		{
 			pa(stack_a, stack_b);
-		}
 	}
 }
