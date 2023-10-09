@@ -7,7 +7,12 @@ on:
     branches: [ "master", "dev" ]
 
 jobs:
+<<<<<<< HEAD
   test:
+=======
+  tests:
+
+>>>>>>> 5f11df6 (???)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
