@@ -15,9 +15,13 @@
 t_cdllist	*parse(int argc, char **argv)
 {
 	t_cdllist	*stack;
+	char		**split;
 	int			argiv;
+	char		*tmp;
 
 	stack = NULL;
+	split = NULL;
+	argiv = 0;
 	if (argc > 2)
 	{
 		argiv = ft_atoi(argv[1]);
@@ -37,11 +41,14 @@ t_cdllist	*parse(int argc, char **argv)
 	}
 	else if (argc == 2)
 	{
-
+		tmp = ft_strjoin("./push_swap ", argv[1]);
+		split = ft_split(tmp, ' ');
+		free(tmp);
+		while (split[argiv])
+			argiv++;
+		return (parse(argiv, split));
 	}
 	else
-	{
 		suicide(NULL, NULL, "[CRIT]: Invalid arguments");
-	}
 	return (stack);
 }
