@@ -36,5 +36,13 @@ t_cdllist	*parse(int argc, char **argv)
 				return (NULL);
 		}
 	}
+	else if (argc == 2)
+	{
+
+	}
+	else
+	{
+
+	}
 	return (stack);
 }

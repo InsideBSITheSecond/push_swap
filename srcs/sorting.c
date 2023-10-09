@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 17:47:48 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/09 07:40:07 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void	sort(t_cdllist **stack_a, t_cdllist **stack_b)
+void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 {
 	if (ft_cdllsize(*stack_a) <= 5)
 		simple(stack_a, stack_b);

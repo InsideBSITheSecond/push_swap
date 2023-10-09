@@ -35,7 +35,7 @@ PSARG := 789 -123 -567 345 234 456 -678
 
 PS := push_swap
 CCHECKER := checker
-SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/sorting.c srcs/issorted.c
+SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/sorting.c srcs/issorted.c srcs/suicide.c
 INCLS := includes/pushswap.h
 
 ifeq ($(UNAME), Linux)

@@ -61,6 +61,8 @@ void		init_index(t_cdllist *tail);
 int			check_base(char *base);
 void		ft_putnbr_base(int nbr, char *base);
 void		radix(t_cdllist **stack_a, t_cdllist **stack_b);
-void		sort(t_cdllist **stack_a, t_cdllist **stack_b);
+void		compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b);
 void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
+void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
+int	issorted(t_cdllist *tail);
 #endif
