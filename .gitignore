@@ -1,5 +1,5 @@
 *.dSYM
-.vscode/launch.json
 push_swap
 checker
 libft.a
+valgrind.txt
