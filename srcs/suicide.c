@@ -14,7 +14,9 @@
 
 void	suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason)
 {
-	ft_cdlldrop(stack_a, bruh);
-	ft_cdlldrop(stack_b, bruh);
-	ft_printf("[CRIT]: Program ended: %s", reason);
+	if (stack_a && *stack_a)
+		ft_cdlldrop(stack_a, bruh);
+	if (stack_b && *stack_b)
+		ft_cdlldrop(stack_b, bruh);
+	ft_printf("[ERR]: Program ended:\n  %s\n", reason);
 }

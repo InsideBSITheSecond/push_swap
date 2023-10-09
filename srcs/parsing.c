@@ -18,6 +18,8 @@ t_cdllist	*parse(int argc, char **argv)
 	t_cdllist	*newnode;
 	int			argiv;
 
+	stack = NULL;
+	newnode = NULL;
 	if (argc > 2)
 	{
 		argiv = ft_atoi(argv[1]);
@@ -42,7 +44,7 @@ t_cdllist	*parse(int argc, char **argv)
 	}
 	else
 	{
-
+		suicide(NULL, NULL, "[CRIT]: Invalid arguments");
 	}
 	return (stack);
 }
