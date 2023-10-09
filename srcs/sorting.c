@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/09 09:39:04 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:26:43 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 				pb(stack_a, stack_b);
 		}
 		while (ft_cdllsize(*stack_b) != -1)
-		{
 			pa(stack_a, stack_b);
-		}
 	}
 }
