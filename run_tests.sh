@@ -6,7 +6,7 @@ perform_test() {
 
 	printf "==================="
     printf "$printf_string"
-    RAND=$(python -c "$python_command")
+    RAND=$(python3 -c "$python_command")
     ./push_swap ${RAND} | wc -l
     time ./push_swap ${RAND} | ./checker ${RAND}
 	printf "==================="
