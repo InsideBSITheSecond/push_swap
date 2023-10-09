@@ -42,6 +42,7 @@ ifeq ($(UNAME), Darwin)
 	CHECKER := checker_mac
 endif
 
+
 # main program
 $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
 	$(CC) push_swap.c $(SRCS) $(CCARGS) -o $(PS)
