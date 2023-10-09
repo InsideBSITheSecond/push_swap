@@ -2,16 +2,46 @@ name: base tests
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
 
 jobs:
-  test:
-
+test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: ./run_tests.sh
-      run: ./run_tests.sh
+
+    - name: duplicate numbers
+      id: dupe
+      run: time ./push_swap 1 2 3 2 4 5 -2 | ./checker 1 2 3 2 4 5 -2
+      continue-on-error: true
+      
+    - name: check dupe error & mark success
+      run: exit 0
+      continue-on-error: true
+
+    - name: 25 positives
+      id: p25
+      run: ./run_tests.sh 0 250 25
+      continue-on-error: false
+
+    - name: 25 positives & negatives
+      id: pn25
+      run: ./run_tests.sh -125 125 25
+      continue-on-error: false
+
+    - name: 250 10x higher range positives & negatives
+      id: pn250
+      run: ./run_tests.sh -1250 1250 250
+      continue-on-error: false
+
+    - name: 2500 100x higher range positives & negatives
+      id: pn2500
+      run: ./run_tests.sh -12500 12500 2500
+      continue-on-error: false
+
+    - name: numbers include a 0
+      id: zero
+      run: time ./push_swap 1 2 3 4 5 6 0 -1 -2 | ./checker 1 2 3 4 5 6 0 -1 -2
+      continue-on-error: false

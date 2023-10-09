@@ -6,13 +6,13 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 16:49:03 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/07 17:47:48 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-void sort(t_cdllist **stack_a, t_cdllist **stack_b)
+void	sort(t_cdllist **stack_a, t_cdllist **stack_b)
 {
 	if (ft_cdllsize(*stack_a) <= 5)
 		simple(stack_a, stack_b);
@@ -20,18 +20,21 @@ void sort(t_cdllist **stack_a, t_cdllist **stack_b)
 		radix(stack_a, stack_b);
 }
 
-void simple(t_cdllist **stack_a, t_cdllist **stack_b)
+void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	
 }
 
-void radix(t_cdllist **stack_a, t_cdllist **stack_b)
+void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	int	size = ft_cdllsize(*stack_a);
-	int max = size - 1;
-	int max_bits = 0;
-	t_cdllist	*a_head = (*stack_a)->next;
+	int			size;
+	int			max;
+	int			max_bits;
+	t_cdllist	*a_head;
 
+	size = ft_cdllsize(*stack_a);
+	max = size - 1;
+	max_bits = 0;
+	a_head = (*stack_a)->next;
 	while ((max >> max_bits) != 0)
 		++max_bits;
 	for (int i = 0; i < max_bits; ++i)
