@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/09 07:40:07 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/09 09:39:04 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	if (ft_cdllsize(*stack_a) <= 5)
-		simple(stack_a, stack_b);
-	else
+	//if (ft_cdllsize(*stack_a) <= 5)
+	//	simple(stack_a, stack_b);
+	//else
 		radix(stack_a, stack_b);
 }
 
 void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
 {
+	printf("let's pretend like we re sorting shit here... (argc < 5)\n");
 }
 
 void	radix(t_cdllist **stack_a, t_cdllist **stack_b)

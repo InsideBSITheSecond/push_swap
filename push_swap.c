@@ -25,8 +25,9 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		suicide(&stack_a, &stack_b, "[CRIT]: parsing error\n");
 	init_index(stack_a);
-	//if (issorted(stack_a))
-	//	suicide(&stack_a, &stack_b, "[INFO]: stack is already sorted");
+	if (issorted(stack_a))
+		suicide(&stack_a, &stack_b, "[INFO]: stack is already sorted");
 	compute_sort_ops(&stack_a, &stack_b);
+	suicide(&stack_a, &stack_b, NULL);
 	return (0);
 }

@@ -15,11 +15,9 @@
 t_cdllist	*parse(int argc, char **argv)
 {
 	t_cdllist	*stack;
-	t_cdllist	*newnode;
 	int			argiv;
 
 	stack = NULL;
-	newnode = NULL;
 	if (argc > 2)
 	{
 		argiv = ft_atoi(argv[1]);
@@ -30,12 +28,11 @@ t_cdllist	*parse(int argc, char **argv)
 			argiv = ft_atoi(argv[i]);
 			if (!ft_cdllfind(stack, (void *)(intptr_t)argiv))
 			{
-				newnode = ft_cdllnew((void *)(intptr_t)argiv);
-				newnode->index = -1;
-				ft_cdlladd_back(&stack, newnode);
+				ft_cdlladd_front(stack, ft_cdllnew((void *)(intptr_t)argiv));
+				stack->next->index = -1;
 			}
 			else
-				return (NULL);
+				suicide(&stack, NULL, "[CRIT]: duplicate argument");
 		}
 	}
 	else if (argc == 2)
