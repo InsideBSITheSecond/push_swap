@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/09 11:44:27 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:42:36 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 	t_cdllist	*a_head;
 
 	size = ft_cdllsize(*stack_a);
-	max = size - 1;
+	max = size;
 	max_bits = 0;
 	a_head = (*stack_a)->next;
 	while ((max >> max_bits) != 0)

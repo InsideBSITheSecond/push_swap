@@ -12,6 +12,12 @@
 
 #include "../includes/pushswap.h"
 
+void	considersuicide(t_stacks *stacks, void *check, char *reason)
+{
+	if (!check)
+		suicide(stacks->a, stacks->b, reason);
+}
+
 void	suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason)
 {
 	if (stack_a && *stack_a)

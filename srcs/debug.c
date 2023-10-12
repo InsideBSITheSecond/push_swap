@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:37:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 17:51:08 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/12 17:03:35 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	bruh(void *bruh)
 
 void	print(void *lst)
 {
-	ft_putnbr_base((int)(((t_cdllist *)lst)->content), "0123456789");
-	write(1, " | ", 3);
-	// printf("%i | ", (int)(((t_cdllist *)lst)->content));
+	/*ft_putnbr_base((int)(((t_cdllist *)lst)->content), "0123456789");
+	write(1, " | ", 3);*/
+	printf("%i | ", (int)(((t_cdllist *)lst)->content));
 }
 
 void	printall(void *lst)

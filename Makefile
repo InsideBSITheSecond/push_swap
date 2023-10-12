@@ -17,6 +17,12 @@
 #ft_cdllinsert_before(t_cdllist *node, t_cdllist *toinsert)
 #ft_cdllinsert_between(t_cdllist *prev, t_cdllist *next, t_cdllist *toinsert)
 
+# list order ?
+# triple check parsing
+# sometimes sorting is fucked
+# compare my checker output the the provided one
+# &&&&&&& COMBINE THEM IN GIT ACTIONS
+
 PRINTSTACK := 0
 SILENT := 0
 UNAME := $(shell uname)
