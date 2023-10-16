@@ -19,17 +19,21 @@ int	doillegalchecks(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_strcontainsonly(argv[i], "0123456789+-"))
-			suicide(NULL, NULL, "[CRIT]: some arguments contains illegal characters");
+		if (!ft_strcontsowpref(argv[i], "0123456789", '+')
+			&& !ft_strcontsowpref(argv[i], "0123456789", '-'))
+			suicide(NULL, NULL,
+				"[CRIT]: some arguments contains illegal characters");
 		if (argv[i][0] == '-' && !ft_isdigit(argv[i][1]))
-			suicide(NULL, NULL, "[CRIT]: yeah dude u cant give me a single - as arg");
+			suicide(NULL, NULL,
+				"[CRIT]: yeah dude u cant give me a single - as arg");
 		if (argv[i][0] == '+' && !ft_isdigit(argv[i][1]))
-			suicide(NULL, NULL, "[CRIT]: yeah dude u cant give me a single + as arg");
+			suicide(NULL, NULL,
+				"[CRIT]: yeah dude u cant give me a single + as arg");
 		i++;
 	}
 }
 
-t_cdllist	*parse(int argc, char **argv)
+t_cdllist	*parse(int argc, char **argv, int splitted)
 {
 	t_cdllist	*stack;
 	t_cdllist	*new;
@@ -49,12 +53,14 @@ t_cdllist	*parse(int argc, char **argv)
 			new = ft_cdllnew((void *)(intptr_t)argiv);
 			if (!new)
 				suicide(&stack, NULL, "[CRIT]: node allocation failed");
-			ft_cdlladd_front(stack, new);
-			stack->next->index = -1;
+			ft_cdlladd_back(&stack, new);
+			stack->index = -1;
 		}
 		else
 			suicide(&stack, NULL, "[CRIT]: duplicate argument");
 	}
+	if (splitted)
+		suicide(NULL, NULL, "[INFO] working with split");
 	return (stack);
 }
 
@@ -63,13 +69,14 @@ t_cdllist	*checkparse(int argc, char **argv)
 	char		**split;
 	char		*tmp;
 	int			i;
+	static int	splitted = 0;
 
 	split = NULL;
 	tmp = NULL;
 	if (argc > 2)
 	{
 		doillegalchecks(argc, argv);
-		return (parse(argc, argv));
+		return (parse(argc, argv, splitted));
 	}
 	else if (argc == 2)
 	{
@@ -77,13 +84,16 @@ t_cdllist	*checkparse(int argc, char **argv)
 		considersuicide(&(t_stacks){.a = NULL, .b = NULL},
 			tmp, "[CRIT]: parsing error - join failed");
 		split = ft_split(tmp, ' ');
+		if (!split)
+			free(tmp);
 		considersuicide(&(t_stacks){.a = NULL, .b = NULL},
-			tmp, "[CRIT]: parsing error - split failed");
+			split, "[CRIT]: parsing error - split failed");
 		free(tmp);
 		while (split[i])
 			i++;
-		return (parse(i, split));
+		splitted = 1;
+		return (checkparse(i, split));
 	}
 	else
-		suicide(NULL, NULL, "[CRIT]: Invalid arguments");
+		exit (0);
 }

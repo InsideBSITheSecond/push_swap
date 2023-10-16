@@ -8,6 +8,7 @@
 	],
 	"makefile.buildLog": "build.log",
 	"files.associations": {
-		"algorithm": "c"
+		"algorithm": "c",
+		"sstream": "c"
 	}
 }

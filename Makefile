@@ -10,6 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
+#int overflow
+#we dont check illegal args if argc == 2
+
 # need to support argc == 2 
 # need to make it so we stop creating new nodes in push operations
 # this can be done by creating: 
