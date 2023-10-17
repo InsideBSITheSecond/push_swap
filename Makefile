@@ -96,8 +96,7 @@ re : fclean all
 vg : ${PS}
 	valgrind $(VGARG) ./$(NAME) $(PSARG)
 
-ft_checker : $(CHECKER) $(PS)
-	./$(PS) $(PSARG) | ./$(CHECKER) $(PSARG)
+ft_checker : $(CHECKER)
 
 checker_linux :
 	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
