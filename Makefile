@@ -94,7 +94,7 @@ all : $(PS) $(CCHECKER) $(CHECKER)
 re : fclean all
 
 vg : ${PS}
-	valgrind $(VGARG) ./$(NAME) $(PSARG)
+	valgrind $(VGARG) ./$(PS) $(PSARG)
 
 ft_checker : $(CHECKER)
 
