@@ -17,10 +17,10 @@ void	splitfree(char **split)
 	int i;
 
 	i = 0;
-	if (!split)
+	/*if (!split)
 		return (0);
 	if (!split[i])
-		return (0);
+		return (0);*/
 	while (split[i])
 	{
 		free(split[i]);

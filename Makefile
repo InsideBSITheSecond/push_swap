@@ -11,9 +11,7 @@
 # **************************************************************************** #
 
 #int overflow
-#we dont check illegal args if argc == 2
-
-# need to support argc == 2 
+#argc ==2 causing allocation looping on split
 # need to make it so we stop creating new nodes in push operations
 # this can be done by creating: 
 #ft_cdllinsert_after(t_cdllist *node, t_cdllist *toinsert)
@@ -31,7 +29,7 @@ SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -w -g3  -L. -lft -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) #-Wall -Wextra -Werror
+CCARGS := -w -g3  -L. -lft #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
@@ -57,7 +55,7 @@ $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
 	$(CC) push_swap.c $(SRCS) $(CCARGS) -o $(PS)
 
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
-	$(CC) checker.c $(SRCS) $(CCARGS) -o $(CCHECKER)
+	$(CC) checker.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
 
 # compile main program and run it
 exe : $(PS) $(CCHECKER)

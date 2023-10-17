@@ -36,7 +36,7 @@ typedef struct s_stacks
 	t_cdllist	**b;
 }				t_stacks;
 
-t_cdllist	*parse(int argc, char **argv);
+t_cdllist	*parse(int argc, char **argv, int splitted);
 t_cdllist	*checkparse(int argc, char **argv);
 
 void		sa(t_cdllist *a_tail, int silent);
@@ -65,4 +65,5 @@ void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
 void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 int			issorted(t_cdllist *tail);
 void		considersuicide(t_stacks *stacks, void *check, char *reason);
+void		splitfree(char **split);
 #endif

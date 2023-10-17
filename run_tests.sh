@@ -3,12 +3,12 @@
 perform_test() {
     local python_command="import random as r; print(*r.sample(range($1, $2), $3), sep=\" \");"
 
-	printf "==================="
-    printf "\nrunning test: ($1->$2)*$3\n"
+	echo "==================="
+    echo "running test: ($1->$2)*$3"
     RAND=$(python3 -c "$python_command")
-	RAND="f 654 1 8 123688"
+	echo "${RAND// / | }"
 	OUT=$(./push_swap ${RAND})
-	ARGN=$(echo "${RAND}" |wc -w)
+	ARGN=$(echo "${RAND} " | wc -w)
     CMDN=$(echo "${OUT}" | wc -l)
 	echo "sorted ${ARGN} elements using ${CMDN} operations"
     echo "${OUT}" | ./checker ${RAND}

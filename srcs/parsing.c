@@ -60,7 +60,7 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 			suicide(&stack, NULL, "[CRIT]: duplicate argument");
 	}
 	if (splitted)
-		suicide(NULL, NULL, "[INFO] working with split");
+		splitfree(argv);
 	return (stack);
 }
 
@@ -92,6 +92,8 @@ t_cdllist	*checkparse(int argc, char **argv)
 		while (split[i])
 			i++;
 		splitted = 1;
+		if (i == 2)
+			suicide(NULL, NULL, "[INFO]: stack is already sorted (size 1)");
 		return (checkparse(i, split));
 	}
 	else
