@@ -88,7 +88,7 @@ fclean : clean
 	rm -f $(PS) libft.a $(CHECKER) $(CCHECKER)
 	cd libft && $(MAKE) fclean
 
-all : $(PS) $(CCHECKER)
+all : $(PS) $(CCHECKER) $(CHECKER)
 
 # recompile
 re : fclean all
@@ -104,7 +104,7 @@ checker_linux :
 	chmod +x $(CHECKER)
 	mv $(CHECKER) ft_checker
 
-checker_mac :
+checker_Mac :
 	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
 	chmod +x $(CHECKER)
 	mv $(CHECKER) ft_checker
