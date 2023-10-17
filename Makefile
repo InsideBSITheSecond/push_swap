@@ -108,7 +108,5 @@ checker_mac :
 	mv checker_Mac checker_mac
 	chmod +x $(CHECKER)
 
-
-
 rand :
 	
