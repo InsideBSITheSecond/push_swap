@@ -5,3 +5,9 @@ main branch
 
 dev branch
 [![base compilation](https://github.com/InsideBSITheSecond/push_swap/actions/workflows/compile.yml/badge.svg?branch=dev)](https://github.com/InsideBSITheSecond/push_swap/actions/workflows/compile.yml) [![base tests](https://github.com/InsideBSITheSecond/push_swap/actions/workflows/run_tests.yml/badge.svg?branch=dev)](https://github.com/InsideBSITheSecond/push_swap/actions/workflows/run_tests.yml)
+
+# usage
+## solo usage
+./push_swap [args]
+## checker usage
+./push_swap [args] | ./checker [args]
