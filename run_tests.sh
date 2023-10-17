@@ -12,7 +12,7 @@ perform_test() {
     CMDN=$(echo "${OUT}" | wc -l)
 	echo "sorted ${ARGN} elements using ${CMDN} operations"
     echo "${OUT}" | ./checker ${RAND}
-	echo "${OUT}" | ./checker_mac ${RAND}
+	echo "${OUT}" | ./ft_checker ${RAND}
 }
 
 make -s -j4 dep

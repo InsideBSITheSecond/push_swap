@@ -46,7 +46,7 @@ ifeq ($(UNAME), Linux)
 	CHECKER := checker_linux
 endif
 ifeq ($(UNAME), Darwin)
-	CHECKER := checker_mac
+	CHECKER := checker_Mac
 endif
 
 
@@ -102,11 +102,12 @@ ft_checker : $(CHECKER) $(PS)
 checker_linux :
 	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
 	chmod +x $(CHECKER)
+	mv $(CHECKER) ft_checker
 
 checker_mac :
 	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
-	mv checker_Mac checker_mac
 	chmod +x $(CHECKER)
+	mv $(CHECKER) ft_checker
 
 rand :
 	
