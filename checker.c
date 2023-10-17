@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:45:45 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/07 18:35:16 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/17 16:56:59 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,12 @@ int	main(int argc, char **argv)
 	char		*line;
 	t_cdllist	*stack_a;
 	t_cdllist	*stack_b;
-
-	stack_a = parse(argc, argv);
+	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
 	if (!stack_a)
 		exit(ft_printf("[ERROR]: parsing error\n"));
 	while (line = get_next_line(0))
-	{
 		exec(&stack_a, &stack_b, line);
-	}
 	if (PRINTSTACK)
 	{
 		ft_cdlliter(stack_a, print);

@@ -12,6 +12,28 @@
 
 #include "../includes/pushswap.h"
 
+void	splitfree(char **split)
+{
+	int i;
+
+	i = 0;
+	/*if (!split)
+		return (0);
+	if (!split[i])
+		return (0);*/
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+}
+
+void	considersuicide(t_stacks *stacks, void *check, char *reason)
+{
+	if (!check)
+		suicide(stacks->a, stacks->b, reason);
+}
+
 void	suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason)
 {
 	if (stack_a && *stack_a)

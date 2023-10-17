@@ -10,19 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-# need to support argc == 2 
+#int overflow
+#argc ==2 causing allocation looping on split
 # need to make it so we stop creating new nodes in push operations
 # this can be done by creating: 
 #ft_cdllinsert_after(t_cdllist *node, t_cdllist *toinsert)
 #ft_cdllinsert_before(t_cdllist *node, t_cdllist *toinsert)
 #ft_cdllinsert_between(t_cdllist *prev, t_cdllist *next, t_cdllist *toinsert)
 
+# list order ?
+# triple check parsing
+# sometimes sorting is fucked
+# compare my checker output the the provided one
+# &&&&&&& COMBINE THEM IN GIT ACTIONS
+
 PRINTSTACK := 0
 SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -w -g3  -L. -lft -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) #-Wall -Wextra -Werror
+CCARGS := -w -g3  -L. -lft #-Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
@@ -39,7 +46,7 @@ ifeq ($(UNAME), Linux)
 	CHECKER := checker_linux
 endif
 ifeq ($(UNAME), Darwin)
-	CHECKER := checker_mac
+	CHECKER := checker_Mac
 endif
 
 
@@ -48,7 +55,7 @@ $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
 	$(CC) push_swap.c $(SRCS) $(CCARGS) -o $(PS)
 
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
-	$(CC) checker.c $(SRCS) $(CCARGS) -o $(CCHECKER)
+	$(CC) checker.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
 
 # compile main program and run it
 exe : $(PS) $(CCHECKER)
@@ -81,7 +88,7 @@ fclean : clean
 	rm -f $(PS) libft.a $(CHECKER) $(CCHECKER)
 	cd libft && $(MAKE) fclean
 
-all : $(PS) $(CCHECKER)
+all : $(PS) $(CCHECKER) $(CHECKER)
 
 # recompile
 re : fclean all
@@ -89,19 +96,17 @@ re : fclean all
 vg : ${PS}
 	valgrind $(VGARG) ./$(NAME) $(PSARG)
 
-ft_checker : $(CHECKER) $(PS)
-	./$(PS) $(PSARG) | ./$(CHECKER) $(PSARG)
+ft_checker : $(CHECKER)
 
 checker_linux :
 	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
 	chmod +x $(CHECKER)
+	mv $(CHECKER) ft_checker
 
-checker_mac :
+checker_Mac :
 	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
-	mv checker_Mac checker_mac
 	chmod +x $(CHECKER)
-
-
+	mv $(CHECKER) ft_checker
 
 rand :
 	

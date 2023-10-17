@@ -49,4 +49,5 @@ void	init_index(t_cdllist *tail)
 		if (min)
 			min->index = i;
 	}
+	//ft_cdlliter(tail, print); printf("\n\n");
 }
