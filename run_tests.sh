@@ -15,20 +15,4 @@ perform_test() {
 	echo "${OUT}" | ./ft_checker ${RAND}
 }
 
-make -s -j4 dep
-make -s -j4 push_swap
-
-case "$(uname -sr)" in
-   Darwin*)
-     make -s checker_mac
-     ;;
-   Linux*)
-     make -s checker_linux
-     ;;
-   *)
-     echo 'unknown os send help :(' 
-     ;;
-esac
-
-make -s -j4 SILENT=1 PRINTSTACK=1 checker
 perform_test "$1" "$2" "$3"
