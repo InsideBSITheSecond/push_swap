@@ -62,8 +62,8 @@ void		ft_putnbr_base(int nbr, char *base);
 void		radix(t_cdllist **stack_a, t_cdllist **stack_b);
 void		compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b);
 void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
-void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 int			issorted(t_cdllist *tail);
 void		considersuicide(t_stacks *stacks, void *check, char *reason);
+void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 void		splitfree(char **split);
 #endif

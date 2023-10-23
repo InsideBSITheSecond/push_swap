@@ -14,7 +14,7 @@
 
 void	splitfree(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	/*if (!split)
@@ -26,6 +26,7 @@ void	splitfree(char **split)
 		free(split[i]);
 		i++;
 	}
+	free(split);
 }
 
 void	considersuicide(t_stacks *stacks, void *check, char *reason)
@@ -34,12 +35,25 @@ void	considersuicide(t_stacks *stacks, void *check, char *reason)
 		suicide(stacks->a, stacks->b, reason);
 }
 
+void	considersuicidens(void *check, char *reason)
+{
+	if (!check)
+		suicidens(reason);
+}
+
 void	suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason)
 {
 	if (stack_a && *stack_a)
 		ft_cdlldrop(stack_a, bruh);
 	if (stack_b && *stack_b)
 		ft_cdlldrop(stack_b, bruh);
+	if (reason)
+		ft_printf("[ERR]: Program ended:\n  %s\n", reason);
+	exit(1);
+}
+
+void	suicidens(char *reason)
+{
 	if (reason)
 		ft_printf("[ERR]: Program ended:\n  %s\n", reason);
 	exit(1);

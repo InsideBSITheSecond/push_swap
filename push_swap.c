@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "includes/pushswap.h"
 
 int	main(int argc, char **argv)
@@ -27,6 +25,8 @@ int	main(int argc, char **argv)
 	if (issorted(stack_a))
 		suicide(&stack_a, &stack_b, "[INFO]: stack is already sorted");
 	compute_sort_ops(&stack_a, &stack_b);
+	if (PRINTSTACK)
+		ft_cdlliter(stack_a, print);
 	suicide(&stack_a, &stack_b, NULL);
 	return (0);
 }

@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:37:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/16 16:57:08 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/20 00:26:26 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+//useless
 void	bruh(void *bruh)
 {
 	return ;
 }
 
+//print the content of a stack item
 void	print(void *lst)
 {
 	ft_putnbr_base((int)(((t_cdllist *)lst)->content), "0123456789");
@@ -24,6 +26,7 @@ void	print(void *lst)
 	//printf("%i | ", (int)(((t_cdllist *)lst)->content));
 }
 
+//print the details of a stack item
 void	printall(void *lst)
 {
 	printf("\n          %p\n", (t_cdllist *)lst);
@@ -32,6 +35,7 @@ void	printall(void *lst)
 		((t_cdllist *)lst)->next);
 }
 
+//print 2 entire stacks
 void	stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
 {
 	// printf("stack A: | "); ft_cdlliter(a_tail, print); printf("\n");
@@ -42,6 +46,4 @@ void	stackdisplay(t_cdllist *a_tail, t_cdllist *b_tail)
 	write(1, "B: | ", 5);
 	ft_cdlliter(b_tail, print);
 	write(1, "\n\n", 2);
-	// sleep(SLEEP);
-	// system("clear");
 }
