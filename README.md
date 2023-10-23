@@ -13,7 +13,7 @@ dev branch
 ### push_swap only
 ./push_swap [args]
 ### push_swap & checker
-fish:
+#### fish:
 set ARG "[args]"; ./push_swap $ARG | ./checker $ARG
-bash:
+#### bash:
 $ARG="[args]"; ./push_swap $ARG | ./checker $ARG
