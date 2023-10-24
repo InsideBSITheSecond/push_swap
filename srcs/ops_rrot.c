@@ -12,6 +12,8 @@
 
 #include "../includes/pushswap.h"
 
+// Shift down all elements of stack a by 1.
+// The last element becomes the first one.
 void	rra(t_cdllist **a_tail, int silent)
 {
 	*a_tail = (*a_tail)->prev;
@@ -19,6 +21,8 @@ void	rra(t_cdllist **a_tail, int silent)
 		ft_printf("rra\n");
 }
 
+// Shift down all elements of stack b by 1.
+// The last element becomes the first one.
 void	rrb(t_cdllist **b_tail, int silent)
 {
 	*b_tail = (*b_tail)->prev;
@@ -26,6 +30,7 @@ void	rrb(t_cdllist **b_tail, int silent)
 		ft_printf("rrb\n");
 }
 
+// rra and rrb at the same time.
 void	rrr(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	rra(a_tail, 1);

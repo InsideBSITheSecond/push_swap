@@ -25,7 +25,7 @@ void	splitfree(char **split)
 	free(split);
 }
 
-void considersuicide(void *check, char *reason, int cleancount, ...)
+void	considersuicide(void *check, char *reason, int cleancount, ...)
 {
 	int		i;
 	va_list	list;

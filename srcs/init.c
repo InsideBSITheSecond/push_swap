@@ -15,6 +15,7 @@
 
 #include "../includes/pushswap.h"
 
+// return the unindexed node with the lowest value
 t_cdllist	*get_unindexed_min(t_cdllist *tail)
 {
 	t_cdllist	*head;
@@ -37,6 +38,7 @@ t_cdllist	*get_unindexed_min(t_cdllist *tail)
 	return (min);
 }
 
+// initialize every node's indexes
 void	init_index(t_cdllist *tail)
 {
 	int			i;
@@ -52,5 +54,4 @@ void	init_index(t_cdllist *tail)
 			min->index = i;
 		i++;
 	}
-	//ft_cdlliter(tail, print); printf("\n\n");
 }

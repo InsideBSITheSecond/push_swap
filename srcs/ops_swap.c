@@ -16,6 +16,9 @@
 //1-2 node A
 //3-4 node B
 //5-6 node C via A pointers
+
+//Swap the first 2 elements at the top of stack a.
+// Do nothing if there is only one or no elements
 void	sa(t_cdllist *a_tail, int silent)
 {
 	ft_cdllswap(a_tail);
@@ -23,6 +26,8 @@ void	sa(t_cdllist *a_tail, int silent)
 		ft_printf("sa\n");
 }
 
+// Swap the first 2 elements at the top of stack b.
+// Do nothing if there is only one or no elements.
 void	sb(t_cdllist *b_tail, int silent)
 {
 	ft_cdllswap(b_tail);
@@ -30,6 +35,7 @@ void	sb(t_cdllist *b_tail, int silent)
 		ft_printf("sb\n");
 }
 
+// sa and sb at the same time.
 void	ss(t_cdllist *a_tail, t_cdllist *b_tail)
 {
 	sa(a_tail, 1);

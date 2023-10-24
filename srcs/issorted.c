@@ -6,12 +6,13 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:29:59 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/09 09:17:31 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/24 08:49:19 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+// check if the given stack is sorted
 int	issorted(t_cdllist *tail)
 {
 	t_cdllist	*head;

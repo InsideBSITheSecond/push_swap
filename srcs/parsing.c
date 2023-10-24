@@ -12,6 +12,7 @@
 
 #include "../includes/pushswap.h"
 
+// Check for illegal characters
 int	doillegalchecks(int argc, char **argv, int splitted)
 {
 	int	i;
@@ -30,6 +31,7 @@ int	doillegalchecks(int argc, char **argv, int splitted)
 	}
 }
 
+// parser
 t_cdllist	*parse(int argc, char **argv, int splitted)
 {
 	t_cdllist	*stack;
@@ -59,6 +61,7 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 	return (stack);
 }
 
+// pre-parsing (split check)
 t_cdllist	*checkparse(int argc, char **argv)
 {
 	char		**split;
