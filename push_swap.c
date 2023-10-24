@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "includes/pushswap.h"
 
 int	main(int argc, char **argv)
@@ -21,12 +19,13 @@ int	main(int argc, char **argv)
 
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
-	if (!stack_a)
-		suicide(&stack_a, &stack_b, "[CRIT]: parsing error\n");
+	considersuicide(stack_a, "[ERR]: parsing error\n", 0);
 	init_index(stack_a);
 	if (issorted(stack_a))
-		suicide(&stack_a, &stack_b, "[INFO]: stack is already sorted");
+		considersuicide(NULL, "[INFO]: stack is already sorted\n", 1, &stack_a);
 	compute_sort_ops(&stack_a, &stack_b);
-	suicide(&stack_a, &stack_b, NULL);
+	if (PRINTSTACK)
+		ft_cdlliter(stack_a, print);
+	considersuicide(NULL, "", 1, &stack_a);
 	return (0);
 }

@@ -14,33 +14,40 @@
 
 void	splitfree(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	/*if (!split)
-		return (0);
-	if (!split[i])
-		return (0);*/
 	while (split[i])
 	{
 		free(split[i]);
 		i++;
 	}
+	free(split);
 }
 
-void	considersuicide(t_stacks *stacks, void *check, char *reason)
+void	considersuicide(void *check, char *reason, int cleancount, ...)
 {
+	int		i;
+	va_list	list;
+	void	*ptr;
+
+	i = 0;
 	if (!check)
-		suicide(stacks->a, stacks->b, reason);
-}
-
-void	suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason)
-{
-	if (stack_a && *stack_a)
-		ft_cdlldrop(stack_a, bruh);
-	if (stack_b && *stack_b)
-		ft_cdlldrop(stack_b, bruh);
-	if (reason)
-		ft_printf("[ERR]: Program ended:\n  %s\n", reason);
-	exit(1);
+	{
+		va_start(list, cleancount);
+		while (i < cleancount)
+		{
+			ptr = va_arg(list, void*);
+			if (!ft_strcmp(((char **)ptr)[0], "./push_swap"))
+				splitfree(ptr);
+			else if (((t_cdllist *)ptr)->content)
+				ft_cdlldrop((t_cdllist **)ptr, bruh);
+			else
+				free(ptr);
+			i++;
+		}
+		va_end(list);
+		ft_putstr_fd(reason, 2);
+		exit(2);
+	}
 }

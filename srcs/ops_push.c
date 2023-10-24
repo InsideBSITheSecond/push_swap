@@ -12,6 +12,8 @@
 
 #include "../includes/pushswap.h"
 
+// Take the first element at the top of b and put it at the top of a.
+// Do nothing if b is empty.
 void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	t_cdllist	*tmp;
@@ -30,6 +32,8 @@ void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 		ft_printf("pa\n");
 }
 
+// Take the first element at the top of a and put it at the top of b.
+// Do nothing if a is empty.
 void	pb(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	t_cdllist	*tmp;

@@ -29,7 +29,7 @@ SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -w -g3  -L. -lft #-Wall -Wextra -Werror
+CCARGS := -w -g3 -L. -lft -Wall -Wextra -Werror
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
@@ -39,7 +39,7 @@ PSARG := 789 -123 -567 345 234 456 -678
 
 PS := push_swap
 CCHECKER := checker
-SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/putnbr_base.c srcs/sorting.c srcs/issorted.c srcs/suicide.c
+SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/sorting.c srcs/issorted.c srcs/suicide.c
 INCLS := includes/pushswap.h
 
 ifeq ($(UNAME), Linux)
@@ -52,7 +52,7 @@ endif
 
 # main program
 $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
-	$(CC) push_swap.c $(SRCS) $(CCARGS) -o $(PS)
+	$(CC) push_swap.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(PS)
 
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
 	$(CC) checker.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
@@ -85,7 +85,7 @@ vis :
 
 # full clean
 fclean : clean
-	rm -f $(PS) libft.a $(CHECKER) $(CCHECKER)
+	rm -f $(PS) libft.a ft_checker $(CCHECKER)
 	cd libft && $(MAKE) fclean
 
 all : $(PS) $(CCHECKER) $(CHECKER)
