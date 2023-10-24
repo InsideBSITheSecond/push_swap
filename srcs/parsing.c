@@ -83,8 +83,7 @@ t_cdllist	*checkparse(int argc, char **argv)
 		split = ft_split(tmp, ' ');
 		considersuicide(split, "[CRIT]: parsing error - split failed", 1, tmp);
 		free(tmp);
-		while (split[i])
-			i++;
+		while (split[i++])
 		splitted = 1;
 		if (i == 2)
 			considersuicide(NULL, "[INFO]: you must provide more than 1 arg", 0);
