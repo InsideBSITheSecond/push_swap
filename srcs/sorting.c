@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/17 15:31:23 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:51:10 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	//if (ft_cdllsize(*stack_a) <= 5)
-	//	simple(stack_a, stack_b);
-	//else
+	if (ft_cdllsize(*stack_a) <= 5)
+		simple(stack_a, stack_b);
+	else
 		radix(stack_a, stack_b);
 }
 
@@ -27,32 +27,29 @@ void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
 
 void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 {
-	int			size;
-	int			max;
-	int			max_bits;
-	t_cdllist	*a_head;
+	int				size;
+	static t_ivec2d	max = (t_ivec2d){.x = 0, .y = 0};
+	static t_ivec2d	i = (t_ivec2d){.x = 0, .y = 0};
+	t_cdllist		*a_head;
 
 	size = ft_cdllsize(*stack_a);
-	max = size;
-	max_bits = 0;
+	max.x = size;
 	a_head = (*stack_a)->next;
-	while ((max >> max_bits) != 0)
-		++max_bits;
-	for (int i = 0; i < max_bits; ++i)
+	while ((max.x >> max.y) != 0)
+		++max.y;
+	while (i.x < max.y)
 	{
-		for (int j = 0; j < size; ++j)
+		i.y = 0;
+		while (i.y++ < size)
 		{
 			a_head = (*stack_a)->next;
-			if (((a_head->index >> i) & 1) == 1)
+			if (((a_head->index >> i.x) & 1) == 1)
 				ra(stack_a, 0);
 			else
 				pb(stack_a, stack_b);
-			//stackdisplay(*stack_a, *stack_b);
 		}
 		while (ft_cdllsize(*stack_b) != -1)
-		{
 			pa(stack_a, stack_b);
-			//stackdisplay(*stack_a, *stack_b);
-		}
+		i.x++;
 	}
 }

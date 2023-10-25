@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:29:30 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/09 07:29:30 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:25:49 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	considersuicide(void *check, char *reason, int cleancount, ...)
 		va_start(list, cleancount);
 		while (i < cleancount)
 		{
-			ptr = va_arg(list, void*);
+			ptr = va_arg(list, void *);
 			if (!ft_strcmp(((char **)ptr)[0], "./push_swap"))
 				splitfree(ptr);
 			else if (((t_cdllist *)ptr)->content)
