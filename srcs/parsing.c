@@ -6,28 +6,31 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 17:59:03 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:34:59 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-// Check for illegal characters
-int	doillegalchecks(int argc, char **argv, int splttd)
+// hmmm sussy arguments show me ur papers
+void	doillegalchecks(int argc, char **argv, int splttd)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		considersuicide(!(!ft_strcontsowpref(argv[i], "0123456789", '+')
+		considersuicide((void *)(intptr_t)
+			!(!ft_strcontsowpref(argv[i], "0123456789", '+')
 				&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
 			"[CRIT]: some arguments contains illegal characters", splttd, argv);
-		considersuicide(!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
+		considersuicide((void *)(intptr_t)
+			!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
 			"[CRIT]: yeah dude u cant give me a single - as arg", splttd, argv);
-		considersuicide(!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
+		considersuicide((void *)(intptr_t)
+			!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
 			"[CRIT]: some arguments contains illegal characters", splttd, argv);
-		considersuicide((ft_atoi(argv[i]) == ft_atol(argv[i])
+		considersuicide((void *)(intptr_t)(ft_atoi(argv[i]) == ft_atol(argv[i])
 				&& ft_strlen(argv[i]) < 12),
 			"[CRIT]: arg exceeding limit", splttd, argv);
 		i++;

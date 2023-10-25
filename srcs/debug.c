@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:19:32 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 17:50:32 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:21:08 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // function that does litgerally nothing
 void	bruh(void *bruh)
 {
+	(void)bruh;
 	return ;
 }
 

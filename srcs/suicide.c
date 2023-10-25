@@ -6,12 +6,13 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:29:30 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 17:25:49 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:38:27 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+// free a split
 void	splitfree(char **split)
 {
 	int	i;
@@ -25,6 +26,9 @@ void	splitfree(char **split)
 	free(split);
 }
 
+// this function will consider suicide and do it if all hopes are lost
+// the function suicide in a clean way and don't
+// leave a mess of allocated stuff behind
 void	considersuicide(void *check, char *reason, int cleancount, ...)
 {
 	int		i;

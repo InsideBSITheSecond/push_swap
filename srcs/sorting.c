@@ -6,12 +6,13 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/25 17:51:10 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:38:31 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+// decide if we shall perform simple sort or radix sort
 void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 {
 	if (ft_cdllsize(*stack_a) <= 5)
@@ -20,11 +21,15 @@ void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 		radix(stack_a, stack_b);
 }
 
+// simple sort
 void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
 {
+	(void)stack_a;
+	(void)stack_b;
 	printf("let's pretend like we re sorting shit here... (argc < 5)\n");
 }
 
+// radix sort
 void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 {
 	int				size;
