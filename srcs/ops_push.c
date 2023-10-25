@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 15:52:17 by llegrand          #+#    #+#             */
-/*   Updated: 2023/09/28 15:52:17 by llegrand         ###   ########.fr       */
+/*   Created: 2023/10/25 17:08:26 by llegrand          #+#    #+#             */
+/*   Updated: 2023/10/25 17:24:46 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-// Take the first element at the top of b and put it at the top of a.
+// Take the first element at the top of b and put hit at the top of a.
 // Do nothing if b is empty.
 void	pa(t_cdllist **a_tail, t_cdllist **b_tail)
 {

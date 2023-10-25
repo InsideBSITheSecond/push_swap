@@ -29,7 +29,7 @@ SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -w -g3 -L. -lft -Wall -Wextra -Werror
+CCARGS := -g3 -L. -lft -Wall -Werror -Wextra
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
@@ -94,7 +94,7 @@ all : $(PS) $(CCHECKER) $(CHECKER)
 re : fclean all
 
 vg : ${PS}
-	valgrind $(VGARG) ./$(NAME) $(PSARG)
+	valgrind $(VGARG) ./$(PS) $(PSARG)
 
 ft_checker : $(CHECKER)
 

@@ -6,27 +6,33 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/09/26 14:19:51 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:34:59 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-// Check for illegal characters
-int	doillegalchecks(int argc, char **argv, int splitted)
+// hmmm sussy arguments show me ur papers
+void	doillegalchecks(int argc, char **argv, int splttd)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		considersuicide(!(!ft_strcontsowpref(argv[i], "0123456789", '+')
-			&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
-			"[CRIT]: some arguments contains illegal characters", splitted, argv);
-		considersuicide(!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
-			"[CRIT]: yeah dude u cant give me a single - as arg", splitted, argv);
-		considersuicide(!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
-			"[CRIT]: some arguments contains illegal characters", splitted, argv);
+		considersuicide((void *)(intptr_t)
+			!(!ft_strcontsowpref(argv[i], "0123456789", '+')
+				&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
+			"[CRIT]: some arguments contains illegal characters", splttd, argv);
+		considersuicide((void *)(intptr_t)
+			!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
+			"[CRIT]: yeah dude u cant give me a single - as arg", splttd, argv);
+		considersuicide((void *)(intptr_t)
+			!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
+			"[CRIT]: some arguments contains illegal characters", splttd, argv);
+		considersuicide((void *)(intptr_t)(ft_atoi(argv[i]) == ft_atol(argv[i])
+				&& ft_strlen(argv[i]) < 12),
+			"[CRIT]: arg exceeding limit", splttd, argv);
 		i++;
 	}
 }
@@ -34,18 +40,18 @@ int	doillegalchecks(int argc, char **argv, int splitted)
 // parser
 t_cdllist	*parse(int argc, char **argv, int splitted)
 {
-	t_cdllist	*stack;
-	t_cdllist	*new;
-	int			argiv;
+	static t_cdllist		*stack = NULL;
+	t_cdllist				*new;
+	int						argiv;
+	static int				i = 2;
 
-	stack = NULL;
 	argiv = ft_atoi(argv[1]);
 	stack = ft_cdllnew((void *)(intptr_t)argiv);
 	considersuicide(stack, "[CRIT]: stack allocation failed", 0);
 	stack->index = -1;
-	for (int i = 2; i <= argc - 1; i++)
+	while (i <= argc - 1)
 	{
-		argiv = ft_atoi(argv[i]);
+		argiv = ft_atoi(argv[i++]);
 		if (!ft_cdllfind(stack, (void *)(intptr_t)argiv))
 		{
 			new = ft_cdllnew((void *)(intptr_t)argiv);
@@ -64,13 +70,11 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 // pre-parsing (split check)
 t_cdllist	*checkparse(int argc, char **argv)
 {
-	char		**split;
-	char		*tmp;
-	int			i;
+	static char	**split = NULL;
+	static char	*tmp = NULL;
+	static int	i = 0;
 	static int	splitted = 0;
 
-	split = NULL;
-	tmp = NULL;
 	if (argc > 2)
 	{
 		doillegalchecks(argc, argv, splitted);
@@ -83,11 +87,10 @@ t_cdllist	*checkparse(int argc, char **argv)
 		split = ft_split(tmp, ' ');
 		considersuicide(split, "[CRIT]: parsing error - split failed", 1, tmp);
 		free(tmp);
-		while (split[i])
-			i++;
-		splitted = 1;
+		while (split[++i])
+			splitted = 1;
 		if (i == 2)
-			considersuicide(NULL, "[INFO]: you must provide more than 1 arg", 0);
+			considersuicide(NULL, "[INFO]: more than 1 arg needed", 0);
 		return (checkparse(i, split));
 	}
 	else
