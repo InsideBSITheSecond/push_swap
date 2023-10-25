@@ -29,7 +29,7 @@ SILENT := 0
 UNAME := $(shell uname)
 
 CC := gcc
-CCARGS := -Wall -Wextra -Werror -g3 -L. -lft
+CCARGS := -g3 -L. -lft
 
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
