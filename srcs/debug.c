@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:19:32 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 18:21:08 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:32:37 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	bruh(void *bruh)
 	//write(1, " | ", 3);
 void	print(void *lst)
 {
-	printf("%i | ", (int)(((t_cdllist *)lst)->content));
+	printf("%i | ", (int)(intptr_t)(((t_cdllist *)lst)->content));
 }
 
 // print all attributes of a cdll node
@@ -33,7 +33,7 @@ void	printall(void *lst)
 {
 	printf("\n          %p\n", (t_cdllist *)lst);
 	printf("%p - %i (%i) - %p\n", ((t_cdllist *)lst)->prev,
-		(int)(((t_cdllist *)lst)->content), (int)(((t_cdllist *)lst)->index),
+		(int)(intptr_t)(((t_cdllist *)lst)->content), (int)(intptr_t)(((t_cdllist *)lst)->index),
 		((t_cdllist *)lst)->next);
 }
 
