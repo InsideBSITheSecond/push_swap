@@ -17,6 +17,7 @@
 # include "../libft/includes/get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 
 # ifndef SLEEP
 #  define SLEEP 1
