@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 18:34:59 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:39:46 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	doillegalchecks(int argc, char **argv, int splttd)
 		considersuicide((void *)(intptr_t)
 			!(!ft_strcontsowpref(argv[i], "0123456789", '+')
 				&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
-			"[CRIT]: some arguments contains illegal characters", splttd, argv);
+			"[ERROR]: some args contains illegal characters", splttd, argv);
 		considersuicide((void *)(intptr_t)
 			!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
-			"[CRIT]: yeah dude u cant give me a single - as arg", splttd, argv);
+			"[ERROR]: bro u cant give me a single - as arg", splttd, argv);
 		considersuicide((void *)(intptr_t)
 			!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
-			"[CRIT]: some arguments contains illegal characters", splttd, argv);
+			"[ERROR]: some args contains illegal characters", splttd, argv);
 		considersuicide((void *)(intptr_t)(ft_atoi(argv[i]) == ft_atol(argv[i])
 				&& ft_strlen(argv[i]) < 12),
-			"[CRIT]: arg exceeding limit", splttd, argv);
+			"[ERROR]: arg exceeding limit", splttd, argv);
 		i++;
 	}
 }
@@ -47,7 +47,7 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 
 	argiv = ft_atoi(argv[1]);
 	stack = ft_cdllnew((void *)(intptr_t)argiv);
-	considersuicide(stack, "[CRIT]: stack allocation failed", 0);
+	considersuicide(stack, "[ERROR]: stack allocation failed", 0);
 	stack->index = -1;
 	while (i <= argc - 1)
 	{
@@ -55,12 +55,12 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 		if (!ft_cdllfind(stack, (void *)(intptr_t)argiv))
 		{
 			new = ft_cdllnew((void *)(intptr_t)argiv);
-			considersuicide(new, "[CRIT]: node allocation failed", 1, &stack);
+			considersuicide(new, "[ERROR]: node allocation failed", 1, &stack);
 			ft_cdlladd_back(&stack, new);
 			stack->index = -1;
 		}
 		else
-			considersuicide(NULL, "[CRIT]: duplicate argument", 1, &stack);
+			considersuicide(NULL, "[ERROR]: duplicate argument", 1, &stack);
 	}
 	if (splitted)
 		splitfree(argv);
@@ -83,9 +83,9 @@ t_cdllist	*checkparse(int argc, char **argv)
 	else if (argc == 2)
 	{
 		tmp = ft_strjoin("./push_swap ", argv[1]);
-		considersuicide(tmp, "[CRIT]: parsing error - join failed", 0);
+		considersuicide(tmp, "[ERROR]: parsing error - join failed", 0);
 		split = ft_split(tmp, ' ');
-		considersuicide(split, "[CRIT]: parsing error - split failed", 1, tmp);
+		considersuicide(split, "[ERROR]: parsing error - split failed", 1, tmp);
 		free(tmp);
 		while (split[++i])
 			splitted = 1;

@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:53:08 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/26 16:36:08 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:34:13 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
-	considersuicide(stack_a, "[ERR]: parsing error\n", 0);
+	considersuicide(stack_a, "[ERROR]: parsing error\n", 0);
 	init_index(stack_a);
 	if (issorted(stack_a))
 		considersuicide(NULL, "[INFO]: stack is already sorted\n", 1, &stack_a);
