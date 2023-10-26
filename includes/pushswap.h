@@ -17,6 +17,7 @@
 # include "../libft/includes/get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 
 # ifndef SLEEP
 #  define SLEEP 1
@@ -28,6 +29,10 @@
 
 # ifndef PRINTSTACK
 #  define PRINTSTACK 0
+# endif
+
+# ifndef PRINTERROR
+#  define PRINTERROR 0
 # endif
 
 typedef struct s_stacks

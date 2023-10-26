@@ -10,9 +10,11 @@ perform_test() {
 	OUT=$(./push_swap ${RAND})
 	ARGN=$(echo "${RAND} " | wc -w)
     CMDN=$(echo "${OUT}" | wc -l)
-	echo "sorted ${ARGN} elements using ${CMDN} operations"
-    echo "${OUT}" | ./checker ${RAND}
+	printf "\nFT Checker:"
 	echo "${OUT}" | ./ft_checker ${RAND}
+	printf "My Checker:"
+    echo "${OUT}" | ./checker ${RAND}
+	printf "\nsorted ${ARGN} elements using ${CMDN} operations"
 }
 
 perform_test "$1" "$2" "$3"

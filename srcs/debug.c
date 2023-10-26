@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:19:32 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 20:32:37 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/25 20:38:57 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	printall(void *lst)
 {
 	printf("\n          %p\n", (t_cdllist *)lst);
 	printf("%p - %i (%i) - %p\n", ((t_cdllist *)lst)->prev,
-		(int)(intptr_t)(((t_cdllist *)lst)->content), (int)(intptr_t)(((t_cdllist *)lst)->index),
+		(int)(intptr_t)(((t_cdllist *)lst)->content),
+		(int)(intptr_t)(((t_cdllist *)lst)->index),
 		((t_cdllist *)lst)->next);
 }
 

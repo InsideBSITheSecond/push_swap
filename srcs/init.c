@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 20:33:25 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/10/25 20:39:24 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ t_cdllist	*get_unindexed_min(t_cdllist *tail)
 		if (!min && head->index == -1)
 			min = head;
 		if (min)
-			if ((int)(intptr_t)min->content > (int)(intptr_t)head->content && head->index == -1)
+			if ((int)(intptr_t)min->content > (int)(intptr_t)head->content
+				&& head->index == -1)
 				min = head;
 		head = head->next;
 	}
 	if (min)
-		if ((int)(intptr_t)min->content > (int)(intptr_t)head->content && head->index == -1)
+		if ((int)(intptr_t)min->content > (int)(intptr_t)head->content
+			&& head->index == -1)
 			min = head;
 	return (min);
 }

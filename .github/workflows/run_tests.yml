@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name:
+    - name: compile
       id: build
       run: make -j4 dep; make -j4 push_swap; make SILENT=1 PRINTSTACK=1 -j4 checker; make ft_checker
       continue-on-error: false
