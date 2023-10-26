@@ -31,6 +31,10 @@
 #  define PRINTSTACK 0
 # endif
 
+# ifndef PRINTERROR
+#  define PRINTERROR 0
+# endif
+
 typedef struct s_stacks
 {
 	t_cdllist	**a;

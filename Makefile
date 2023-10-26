@@ -25,6 +25,7 @@
 # &&&&&&& COMBINE THEM IN GIT ACTIONS
 
 PRINTSTACK := 0
+PRINTERROR := 0
 SILENT := 0
 UNAME := $(shell uname)
 
@@ -52,10 +53,10 @@ endif
 
 # main program
 $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
-	$(CC) push_swap.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(PS)
+	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(PS)
 
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
-	$(CC) checker.c -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
+	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
 
 # compile main program and run it
 exe : $(PS) $(CCHECKER)

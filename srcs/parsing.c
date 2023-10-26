@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/26 17:39:46 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:23:37 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_cdllist	*checkparse(int argc, char **argv)
 	{
 		tmp = ft_strjoin("./push_swap ", argv[1]);
 		considersuicide(tmp, "[ERROR]: parsing error - join failed", 0);
-		split = ft_split(tmp, ' ');
+		split = ft_split(tmp, ' '); // sigsegv error if this is null (in strcomp)
 		considersuicide(split, "[ERROR]: parsing error - split failed", 1, tmp);
 		free(tmp);
 		while (split[++i])

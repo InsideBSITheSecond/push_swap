@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:29:30 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/26 17:36:19 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:10:42 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	considersuicide(void *check, char *reason, int cleancount, ...)
 			i++;
 		}
 		va_end(list);
-		ft_putstr_fd(reason, 2);
+		if (!PRINTERROR)
+			ft_putstr_fd("Error\n", 2);
+		else
+			ft_putstr_fd(reason, 2);
 		exit(2);
 	}
 }
