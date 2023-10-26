@@ -1,4 +1,4 @@
-name: base tests
+name: failure tests
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
 
     - name: duplicate numbers
       id: dupe
-      run: ./push_swap 1 2 3 2 4 5 -2 | ./checker 1 2 3 2 4 5 -2
+      run: ./push_swap 1 2 3 2 4 5 -2; ./checker 1 2 3 2 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -28,7 +28,7 @@ jobs:
 
     - name: check illegal input
       id: illegal1
-      run: ./push_swap 1 2 3 15s6 4 5 -2 | ./checker 1 2 3 15s6 4 5 -2
+      run: ./push_swap 1 2 3 15s6 4 5 -2; ./checker 1 2 3 15s6 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -37,7 +37,7 @@ jobs:
 
     - name: check illegal input
       id: illegal2
-      run: ./push_swap 1 2 3 +15s6 4 5 -2 | ./checker 1 2 3 +15s6 4 5 -2
+      run: ./push_swap 1 2 3 +15s6 4 5 -2; ./checker 1 2 3 +15s6 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -46,7 +46,7 @@ jobs:
 
     - name: check illegal input
       id: illegal3
-      run: ./push_swap 1 2 3 -15s6 4 5 -2 | ./checker 1 2 3 -15s6 4 5 -2
+      run: ./push_swap 1 2 3 -15s6 4 5 -2; ./checker 1 2 3 -15s6 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -55,7 +55,7 @@ jobs:
 
     - name: check illegal input
       id: illegal4
-      run: ./push_swap 1 2 3 15-6 4 5 -2 | ./checker 1 2 3 15-6 4 5 -2
+      run: ./push_swap 1 2 3 15-6 4 5 -2; ./checker 1 2 3 15-6 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -64,7 +64,7 @@ jobs:
 
     - name: check int max
       id: intmax
-      run: ./push_swap 1 2 3 2147483648 4 5 -2 | ./checker 1 2 3 2147483648 4 5 -2
+      run: ./push_swap 1 2 3 2147483648 4 5 -2; ./checker 1 2 3 2147483648 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -73,7 +73,7 @@ jobs:
 
     - name: check int min
       id: intmin
-      run: ./push_swap 1 2 3 -2147483649 4 5 -2 | ./checker 1 2 3 -2147483649 4 5 -2
+      run: ./push_swap 1 2 3 -2147483649 4 5 -2; ./checker 1 2 3 -2147483649 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -82,7 +82,7 @@ jobs:
 
     - name: check long long max
       id: llmax
-      run: ./push_swap 1 2 3 9223372036854775808 4 5 -2 | ./checker 1 2 3 9223372036854775808 4 5 -2
+      run: ./push_swap 1 2 3 9223372036854775808 4 5 -2; ./checker 1 2 3 9223372036854775808 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
@@ -91,7 +91,7 @@ jobs:
 
     - name: check long long min
       id: llmin
-      run: ./push_swap 1 2 3 -9223372036854775809 4 5 -2 | ./checker 1 2 3 -9223372036854775809 4 5 -2
+      run: ./push_swap 1 2 3 -9223372036854775809 4 5 -2; ./checker 1 2 3 -9223372036854775809 4 5 -2
       continue-on-error: true
       
     - name: check error & mark success
