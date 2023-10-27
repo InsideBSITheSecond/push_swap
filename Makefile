@@ -88,7 +88,7 @@ fclean : clean
 	cd libft && $(MAKE) fclean
 
 # All
-all : $(PS) $(CCHECKER) ft_checker psv/build/bin/visualizer push_swap_tester/complexity
+all : $(PS) $(CCHECKER) ft_checker
 
 # Recompile
 re : fclean all
