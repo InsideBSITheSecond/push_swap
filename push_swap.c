@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:53:08 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/27 16:23:05 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:36:59 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
-	considersuicide(stack_a, &(t_heap ){.tmp = NULL});
+	considersuicide(stack_a, &(t_heap){.tmp = NULL});
 	init_index(stack_a);
 	if (issorted(stack_a))
 		freeheap(&(t_heap){.stack_a = &stack_a});

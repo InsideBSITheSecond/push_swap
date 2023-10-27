@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:29:30 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/27 16:33:22 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:37:07 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	freeheap(t_heap *heap)
 	ft_cdlldrop(heap->stack_b, bruh);
 	free(heap->tmp);
 }
-
-
 
 /// @brief this function will consider suicide and do it if all hopes are lost
 /// the function suicide in a clean way and don't

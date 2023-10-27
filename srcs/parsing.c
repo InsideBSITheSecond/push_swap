@@ -6,14 +6,14 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/27 16:46:50 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:37:30 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-/// @brief check if all the arguments pass the checks before actually using them.
-/// stop program execution and throw error if anything fails
+/// @brief check if all the arguments pass the checks before actually
+///	using them. stop program execution and throw error if anything fails
 /// @param argc 
 /// @param argv 
 /// @param splttd 
