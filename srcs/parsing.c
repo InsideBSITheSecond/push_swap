@@ -6,13 +6,17 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/26 18:23:37 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:46:50 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-// hmmm sussy arguments show me ur papers
+/// @brief check if all the arguments pass the checks before actually using them.
+/// stop program execution and throw error if anything fails
+/// @param argc 
+/// @param argv 
+/// @param splttd 
 void	doillegalchecks(int argc, char **argv, int splttd)
 {
 	int	i;
@@ -23,21 +27,25 @@ void	doillegalchecks(int argc, char **argv, int splttd)
 		considersuicide((void *)(intptr_t)
 			!(!ft_strcontsowpref(argv[i], "0123456789", '+')
 				&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
-			"[ERROR]: some args contains illegal characters", splttd, argv);
+			&(t_heap){.split = argv, .splitted = splttd});
 		considersuicide((void *)(intptr_t)
 			!(argv[i][0] == '-' && !ft_isdigit(argv[i][1])),
-			"[ERROR]: bro u cant give me a single - as arg", splttd, argv);
+			&(t_heap){.split = argv, .splitted = splttd});
 		considersuicide((void *)(intptr_t)
 			!(argv[i][0] == '+' && !ft_isdigit(argv[i][1])),
-			"[ERROR]: some args contains illegal characters", splttd, argv);
+			&(t_heap){.split = argv, .splitted = splttd});
 		considersuicide((void *)(intptr_t)(ft_atoi(argv[i]) == ft_atol(argv[i])
 				&& ft_strlen(argv[i]) < 12),
-			"[ERROR]: arg exceeding limit", splttd, argv);
+			&(t_heap){.split = argv, .splitted = splttd});
 		i++;
 	}
 }
 
-// parser
+/// @brief parsing system the input and allocate the stack
+/// @param argc 
+/// @param argv 
+/// @param splitted 
+/// @return the allocated stack
 t_cdllist	*parse(int argc, char **argv, int splitted)
 {
 	static t_cdllist		*stack = NULL;
@@ -47,7 +55,7 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 
 	argiv = ft_atoi(argv[1]);
 	stack = ft_cdllnew((void *)(intptr_t)argiv);
-	considersuicide(stack, "[ERROR]: stack allocation failed", 0);
+	considersuicide(stack, &(t_heap){.tmp = NULL});
 	stack->index = -1;
 	while (i <= argc - 1)
 	{
@@ -55,19 +63,24 @@ t_cdllist	*parse(int argc, char **argv, int splitted)
 		if (!ft_cdllfind(stack, (void *)(intptr_t)argiv))
 		{
 			new = ft_cdllnew((void *)(intptr_t)argiv);
-			considersuicide(new, "[ERROR]: node allocation failed", 1, &stack);
+			considersuicide(new, &(t_heap){.stack_a = &stack});
 			ft_cdlladd_back(&stack, new);
 			stack->index = -1;
 		}
 		else
-			considersuicide(NULL, "[ERROR]: duplicate argument", 1, &stack);
+			considersuicide(NULL, &(t_heap){.stack_a = &stack});
 	}
 	if (splitted)
 		splitfree(argv);
 	return (stack);
 }
 
-// pre-parsing (split check)
+/// @brief checks if we should split the input or not.
+/// if yes, it splits and call itself with the splitted input.
+/// if no, the input is splitted already so we hand it to the parser
+/// @param argc 
+/// @param argv 
+/// @return parsed stack
 t_cdllist	*checkparse(int argc, char **argv)
 {
 	static char	**split = NULL;
@@ -83,14 +96,14 @@ t_cdllist	*checkparse(int argc, char **argv)
 	else if (argc == 2)
 	{
 		tmp = ft_strjoin("./push_swap ", argv[1]);
-		considersuicide(tmp, "[ERROR]: parsing error - join failed", 0);
-		split = ft_split(tmp, ' '); // sigsegv error if this is null (in strcomp)
-		considersuicide(split, "[ERROR]: parsing error - split failed", 1, tmp);
+		considersuicide(tmp, &(t_heap){});
+		split = ft_split(tmp, ' ');
+		considersuicide(split, &(t_heap){.tmp = tmp});
 		free(tmp);
 		while (split[++i])
 			splitted = 1;
 		if (i == 2)
-			considersuicide(NULL, "[INFO]: more than 1 arg needed", 0);
+			considersuicide(NULL, &(t_heap){});
 		return (checkparse(i, split));
 	}
 	else

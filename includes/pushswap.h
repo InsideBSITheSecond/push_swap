@@ -35,11 +35,14 @@
 #  define PRINTERROR 0
 # endif
 
-typedef struct s_stacks
+typedef struct s_heap
 {
-	t_cdllist	**a;
-	t_cdllist	**b;
-}				t_stacks;
+	t_cdllist	**stack_a;
+	t_cdllist	**stack_b;
+	char		**split;
+	char		*tmp;
+	int			splitted;
+}				t_heap;
 
 t_cdllist	*parse(int argc, char **argv, int splitted);
 t_cdllist	*checkparse(int argc, char **argv);
@@ -70,5 +73,6 @@ void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
 int			issorted(t_cdllist *tail);
 void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 void		splitfree(char **split);
-void		considersuicide(void *check, char *reason, int cleancount, ...);
+void		considersuicide(void *check, t_heap *heap);
+void		freeheap(t_heap *heap);
 #endif
