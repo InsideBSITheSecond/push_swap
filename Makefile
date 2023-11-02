@@ -26,7 +26,7 @@ UNAME := $(shell uname)
 
 # Compiler variables
 CC := gcc
-CCARGS := -o3 -L. -lft -Wall -Werror -Wextra
+CCARGS := -o3 -Wall -Werror -Wextra
 
 # Some args
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
@@ -40,7 +40,8 @@ PS := push_swap
 CCHECKER := checker
 
 # Sources
-SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/sorting.c srcs/issorted.c srcs/suicide.c
+SRCS := srcs/debug.c srcs/init.c srcs/issorted.c srcs/ops_push.c srcs/ops_rot.c srcs/ops_rrot.c srcs/ops_swap.c srcs/parsing.c srcs/sorting.c srcs/suicide.c
+OBJS=$(addprefix build/, $(notdir $(SRCS:.c=.o)))
 INCLS := includes/pushswap.h
 
 # Linux-OSX cross-compatibility
@@ -54,12 +55,18 @@ ifeq ($(UNAME), Darwin)
 endif
 
 # Push_swap program
-$(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
-	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(PS)
+$(PS) : libft.a push_swap.c $(OBJS) $(INCLS)
+	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -L. -lft -o $(PS)
 
 # Checker program
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
-	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
+	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -L. -lft -o $(CCHECKER)
+
+build/ :
+	mkdir build
+
+build/%.o : srcs/%.c | build
+	$(CC) $(CCARGS) -c $< -o $(addprefix build/, $(notdir $(<:.c=.o)))
 
 # Compile main program and run it
 exe : $(PS) $(CCHECKER)
