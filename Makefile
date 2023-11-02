@@ -55,17 +55,17 @@ ifeq ($(UNAME), Darwin)
 endif
 
 # Push_swap program
-$(PS) : libft.a push_swap.c $(OBJS) $(INCLS)
+$(PS) : build libft.a push_swap.c $(OBJS) $(INCLS)
 	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -L. -lft -o $(PS)
 
 # Checker program
-$(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
+$(CCHECKER) : build libft.a checker.c $(SRCS) $(INCLS)
 	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -L. -lft -o $(CCHECKER)
 
-build/ :
+build :
 	mkdir build
 
-build/%.o : srcs/%.c | build
+build/%.o : srcs/%.c #| build
 	$(CC) $(CCARGS) -c $< -o $(addprefix build/, $(notdir $(<:.c=.o)))
 
 # Compile main program and run it
