@@ -47,9 +47,9 @@ typedef struct s_heap
 t_cdllist	*parse(int argc, char **argv, int splitted);
 t_cdllist	*checkparse(int argc, char **argv);
 
-void		sa(t_cdllist *a_tail, int silent);
-void		sb(t_cdllist *a_tail, int silent);
-void		ss(t_cdllist *a_tail, t_cdllist *b_tail);
+void		sa(t_cdllist **a_tail, int silent);
+void		sb(t_cdllist **a_tail, int silent);
+void		ss(t_cdllist **a_tail, t_cdllist **b_tail);
 
 void		pa(t_cdllist **a_tail, t_cdllist **b_tail);
 void		pb(t_cdllist **a_tail, t_cdllist **b_tail);
@@ -57,6 +57,11 @@ void		pb(t_cdllist **a_tail, t_cdllist **b_tail);
 void		ra(t_cdllist **a_tail, int silent);
 void		rb(t_cdllist **a_tail, int silent);
 void		rr(t_cdllist **a_tail, t_cdllist **b_tail);
+
+void		rra(t_cdllist **a_tail, int silent);
+void		rrb(t_cdllist **b_tail, int silent);
+void		rrr(t_cdllist **a_tail, t_cdllist **b_tail);
+
 
 void		bruh(void *bruh);
 

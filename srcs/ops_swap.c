@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops_swap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:47:32 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 17:25:00 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:40:58 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 //Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements
-void	sa(t_cdllist *a_tail, int silent)
+void	sa(t_cdllist **a_tail, int silent)
 {
 	ft_cdllswap(a_tail);
 	if (!silent && !SILENT)
@@ -28,7 +28,7 @@ void	sa(t_cdllist *a_tail, int silent)
 
 // Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
-void	sb(t_cdllist *b_tail, int silent)
+void	sb(t_cdllist **b_tail, int silent)
 {
 	ft_cdllswap(b_tail);
 	if (!silent && !SILENT)
@@ -36,7 +36,7 @@ void	sb(t_cdllist *b_tail, int silent)
 }
 
 // sa and sb at the same time.
-void	ss(t_cdllist *a_tail, t_cdllist *b_tail)
+void	ss(t_cdllist **a_tail, t_cdllist **b_tail)
 {
 	sa(a_tail, 1);
 	sb(b_tail, 1);
