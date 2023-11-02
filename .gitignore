@@ -3,3 +3,7 @@ push_swap
 checker
 libft.a
 valgrind.txt
+ft_checker
+a.out
+debug.out
+build

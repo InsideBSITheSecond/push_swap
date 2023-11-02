@@ -35,18 +35,21 @@
 #  define PRINTERROR 0
 # endif
 
-typedef struct s_stacks
+typedef struct s_heap
 {
-	t_cdllist	**a;
-	t_cdllist	**b;
-}				t_stacks;
+	t_cdllist	**stack_a;
+	t_cdllist	**stack_b;
+	char		**split;
+	char		*tmp;
+	int			splitted;
+}				t_heap;
 
 t_cdllist	*parse(int argc, char **argv, int splitted);
 t_cdllist	*checkparse(int argc, char **argv);
 
-void		sa(t_cdllist *a_tail, int silent);
-void		sb(t_cdllist *a_tail, int silent);
-void		ss(t_cdllist *a_tail, t_cdllist *b_tail);
+void		sa(t_cdllist **a_tail, int silent);
+void		sb(t_cdllist **a_tail, int silent);
+void		ss(t_cdllist **a_tail, t_cdllist **b_tail);
 
 void		pa(t_cdllist **a_tail, t_cdllist **b_tail);
 void		pb(t_cdllist **a_tail, t_cdllist **b_tail);
@@ -54,6 +57,11 @@ void		pb(t_cdllist **a_tail, t_cdllist **b_tail);
 void		ra(t_cdllist **a_tail, int silent);
 void		rb(t_cdllist **a_tail, int silent);
 void		rr(t_cdllist **a_tail, t_cdllist **b_tail);
+
+void		rra(t_cdllist **a_tail, int silent);
+void		rrb(t_cdllist **b_tail, int silent);
+void		rrr(t_cdllist **a_tail, t_cdllist **b_tail);
+
 
 void		bruh(void *bruh);
 
@@ -70,5 +78,6 @@ void		simple(t_cdllist **stack_a, t_cdllist **stack_b);
 int			issorted(t_cdllist *tail);
 void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 void		splitfree(char **split);
-void		considersuicide(void *check, char *reason, int cleancount, ...);
+void		considersuicide(void *check, t_heap *heap);
+void		freeheap(t_heap *heap);
 #endif

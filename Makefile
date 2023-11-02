@@ -10,104 +10,117 @@
 #                                                                              #
 # **************************************************************************** #
 
-#int overflow
-#argc ==2 causing allocation looping on split
-# need to make it so we stop creating new nodes in push operations
-# this can be done by creating: 
-#ft_cdllinsert_after(t_cdllist *node, t_cdllist *toinsert)
-#ft_cdllinsert_before(t_cdllist *node, t_cdllist *toinsert)
-#ft_cdllinsert_between(t_cdllist *prev, t_cdllist *next, t_cdllist *toinsert)
-
-# list order ?
-# triple check parsing
-# sometimes sorting is fucked
-# compare my checker output the the provided one
-# &&&&&&& COMBINE THEM IN GIT ACTIONS
-
+# Behaviour variables
 PRINTSTACK := 0
 PRINTERROR := 0
 SILENT := 0
+CHECKER4TESTS := ft_checker
+
+# Used by cross-compatibility
 UNAME := $(shell uname)
 
-CC := gcc
-CCARGS := -g3 -L. -lft -Wall -Werror -Wextra
+# Linux-OSX cross-compatibility
+ifeq ($(UNAME), Linux)
+	CHECKER := checker_linux
+	CHECKERURL := https://cdn.intra.42.fr/document/document/14174/checker_linux
+endif
+ifeq ($(UNAME), Darwin)
+	CHECKER := checker_Mac
+	CHECKERURL := https://cdn.intra.42.fr/document/document/14173/checker_Mac
+endif
 
+# Compiler variables
+CC := gcc
+CCARGS := -o3 -Wall -Werror -Wextra
+
+# Some args used for exe & vg targets
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 PSARG := 1 2 3 4 5 6 7 8 9 10
 PSARG := 231 789 123 567 345 925 456 678 234
 PSARG := 789 123 567 345 456 678 234
 PSARG := 789 -123 -567 345 234 456 -678
 
-PS := push_swap
-CCHECKER := checker
-SRCS := srcs/parsing.c srcs/ops_swap.c srcs/ops_push.c srcs/ops_rot.c srcs/debug.c srcs/init.c srcs/sorting.c srcs/issorted.c srcs/suicide.c
+# Sources
+SRCS := srcs/simple_sorting.c srcs/debug.c srcs/init.c srcs/issorted.c srcs/ops_push.c srcs/ops_rot.c srcs/ops_rrot.c srcs/ops_swap.c srcs/parsing.c srcs/sorting.c srcs/suicide.c
 INCLS := includes/pushswap.h
 
-ifeq ($(UNAME), Linux)
-	CHECKER := checker_linux
-endif
-ifeq ($(UNAME), Darwin)
-	CHECKER := checker_Mac
-endif
+# Output names
+PS := push_swap
+CCHECKER := checker
 
-
-# main program
+# Push_swap program
 $(PS) : libft.a push_swap.c $(SRCS) $(INCLS)
-	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(PS)
+	$(CC) push_swap.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -L. -lft -o $(PS)
 
+# Checker program
 $(CCHECKER) : libft.a checker.c $(SRCS) $(INCLS)
-	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=$(SILENT) $(SRCS) $(CCARGS) -o $(CCHECKER)
+	$(CC) checker.c -D PRINTERROR=$(PRINTERROR) -D PRINTSTACK=$(PRINTSTACK) -D SILENT=1 $(SRCS) $(CCARGS) -L. -lft -o $(CCHECKER)
 
-# compile main program and run it
+# Compile main program and run it
 exe : $(PS) $(CCHECKER)
 	./$(PS) $(PSARG) | ./$(CCHECKER) $(PSARG)
 
+# Dependencies
 dep : libft.a
 	
-	
-# libft compilation
+# Libft compilation
 libft.a : libft/Makefile
 	cd libft && $(MAKE) -j16
 	cp libft/libft.a .
 
-# get libft submodule from my github
+# Get libft submodule from my github
 libft/Makefile :
 	git submodule update --init libft
 
-# partial clean
+# Partial clean
 clean :
 	cd libft && $(MAKE) clean
-	rm -rf psv
+	rm -rf build
 
-vis :
-	git clone https://github.com/o-reo/push_swap_visualizer.git psv
-	mkdir psv/build
-	cd psv/build && cmake .. && $(MAKE) && ./bin/visualizer
-
-# full clean
+# Full clean
 fclean : clean
-	rm -f $(PS) libft.a ft_checker $(CCHECKER)
+	rm -f $(PS) libft.a ft_checker $(CCHECKER) imgui.ini
+	rm -rf psv push_swap_tester
 	cd libft && $(MAKE) fclean
 
-all : $(PS) $(CCHECKER) $(CHECKER)
+# All
+all : $(PS) $(CCHECKER) ft_checker
 
-# recompile
+# Recompile
 re : fclean all
 
+# Automated valgrind run
 vg : ${PS}
 	valgrind $(VGARG) ./$(PS) $(PSARG)
 
-ft_checker : $(CHECKER)
-
-checker_linux :
-	wget https://cdn.intra.42.fr/document/document/14174/checker_linux
+# Checker provided by intra cdn
+ft_checker :
+	wget $(CHECKERURL)
 	chmod +x $(CHECKER)
 	mv $(CHECKER) ft_checker
 
-checker_Mac :
-	wget https://cdn.intra.42.fr/document/document/14173/checker_Mac
-	chmod +x $(CHECKER)
-	mv $(CHECKER) ft_checker
+# PUSH_SWAP COMPLEXITY TESTER
+push_swap_tester :
+	git clone https://github.com/SimonCROS/push_swap_tester.git
+push_swap_tester/complexity : push_swap_tester
+	cd push_swap_tester && $(MAKE) en
+complexity : $(PS) $(CHECKER4TESTS) push_swap_tester/complexity
+	./push_swap_tester/complexity 2 10 1 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 3 100 3 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 4 100 7 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 5 100 11 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 50 100 500 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 100 100 1100 ./$(CHECKER4TESTS); echo
+	./push_swap_tester/complexity 1000 10 15100 ./$(CHECKER4TESTS); echo
 
-rand :
-	
+# PUSH_SWAP_VISUALIZER
+psv :
+	git clone https://github.com/o-reo/push_swap_visualizer.git psv
+psv/build/bin/visualizer : psv
+	mkdir psv/build
+	cd psv/build && cmake .. && $(MAKE)
+visualizer : psv/build/bin/visualizer
+	 ./psv/build/bin/visualizer
+
+# PHONY
+.PHONY : complexity checker_Mac checker_linux vg re all fclean visualizer clean dep exe

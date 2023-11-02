@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:53:08 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/26 18:15:08 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:28:16 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	main(int argc, char **argv)
 
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
-	considersuicide(stack_a, "[ERROR]: parsing error\n", 0);
+	considersuicide(stack_a, &(t_heap){.tmp = NULL});
 	init_index(stack_a);
 	if (issorted(stack_a))
-		considersuicide(NULL, "[INFO]: stack is already sorted\n", 1, &stack_a);
+		freeheap(&(t_heap){.stack_a = &stack_a});
 	compute_sort_ops(&stack_a, &stack_b);
 	if (PRINTSTACK)
 		ft_cdlliter(stack_a, print);
-	considersuicide(NULL, "", 1, &stack_a);
+	freeheap(&(t_heap){.stack_a = &stack_a});
 	return (0);
 }

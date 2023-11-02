@@ -9,7 +9,9 @@
 			"libft.h": "c",
 			"printf.h": "c",
 			"pushswap.h": "c",
-			"source_location": "c"
+			"source_location": "c",
+			"chrono": "c",
+			"variant": "c"
 		}
 	},
 	"extensions": {
