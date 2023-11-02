@@ -87,6 +87,7 @@ libft/Makefile :
 # Partial clean
 clean :
 	cd libft && $(MAKE) clean
+	rm -rf build
 
 # Full clean
 fclean : clean
