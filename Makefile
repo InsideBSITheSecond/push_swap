@@ -19,6 +19,16 @@ CHECKER4TESTS := ft_checker
 # Used by cross-compatibility
 UNAME := $(shell uname)
 
+# Linux-OSX cross-compatibility
+ifeq ($(UNAME), Linux)
+	CHECKER := checker_linux
+	CHECKERURL := https://cdn.intra.42.fr/document/document/14174/checker_linux
+endif
+ifeq ($(UNAME), Darwin)
+	CHECKER := checker_Mac
+	CHECKERURL := https://cdn.intra.42.fr/document/document/14173/checker_Mac
+endif
+
 # Compiler variables
 CC := gcc
 CCARGS := -o3 -Wall -Werror -Wextra
@@ -82,16 +92,6 @@ re : fclean all
 # Automated valgrind run
 vg : ${PS}
 	valgrind $(VGARG) ./$(PS) $(PSARG)
-
-# Linux-OSX cross-compatibility
-ifeq ($(UNAME), Linux)
-	CHECKER := checker_linux
-	CHECKERURL := https://cdn.intra.42.fr/document/document/14174/checker_linux
-endif
-ifeq ($(UNAME), Darwin)
-	CHECKER := checker_Mac
-	CHECKERURL := https://cdn.intra.42.fr/document/document/14173/checker_Mac
-endif
 
 # Checker provided by intra cdn
 ft_checker :
