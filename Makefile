@@ -26,7 +26,7 @@ UNAME := $(shell uname)
 
 # Compiler variables
 CC := gcc
-CCARGS := -o3 -Wall -Werror -Wextra
+CCARGS := -g3 -Wall -Werror -Wextra
 
 # Some args
 VGARG := --log-file=valgrind.txt --leak-check=full --show-leak-kinds=all --track-origins=yes -s
