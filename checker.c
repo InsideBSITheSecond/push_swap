@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:45:45 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/11/02 23:30:22 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/11/03 00:59:24 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	char		*line;
 	t_cdllist	*stack_a;
 	t_cdllist	*stack_b;
+
 	line = "";
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;

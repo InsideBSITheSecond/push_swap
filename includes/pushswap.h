@@ -62,7 +62,6 @@ void		rra(t_cdllist **a_tail, int silent);
 void		rrb(t_cdllist **b_tail, int silent);
 void		rrr(t_cdllist **a_tail, t_cdllist **b_tail);
 
-
 void		bruh(void *bruh);
 
 void		print(void *lst);

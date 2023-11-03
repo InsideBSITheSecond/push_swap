@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 19:57:16 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/11/02 23:07:23 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/11/03 00:59:13 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	get_min_index(t_cdllist *tail, int val)
 		min = head;
 	return (min->index);
 }
-
 
 int	get_distance(t_cdllist **stack, int index)
 {
