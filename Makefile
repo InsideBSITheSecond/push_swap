@@ -41,7 +41,7 @@ PSARG := 789 123 567 345 456 678 234
 PSARG := 789 -123 -567 345 234 456 -678
 
 # Sources
-SRCS := srcs/simple_sorting.c srcs/debug.c srcs/init.c srcs/issorted.c srcs/ops_push.c srcs/ops_rot.c srcs/ops_rrot.c srcs/ops_swap.c srcs/parsing.c srcs/sorting.c srcs/suicide.c
+SRCS := srcs/utils.c srcs/simple_sorting.c srcs/debug.c srcs/init.c srcs/issorted.c srcs/ops_push.c srcs/ops_rot.c srcs/ops_rrot.c srcs/ops_swap.c srcs/parsing.c srcs/sorting.c srcs/suicide.c
 INCLS := includes/pushswap.h
 
 # Output names
@@ -122,5 +122,5 @@ psv/build/bin/visualizer : psv
 visualizer : psv/build/bin/visualizer
 	 ./psv/build/bin/visualizer
 
-# PHONY
+# PHONYd
 .PHONY : complexity checker_Mac checker_linux vg re all fclean visualizer clean dep exe

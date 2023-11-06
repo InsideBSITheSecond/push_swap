@@ -62,7 +62,6 @@ void		rra(t_cdllist **a_tail, int silent);
 void		rrb(t_cdllist **b_tail, int silent);
 void		rrr(t_cdllist **a_tail, t_cdllist **b_tail);
 
-
 void		bruh(void *bruh);
 
 void		print(void *lst);
@@ -80,4 +79,11 @@ void		suicide(t_cdllist **stack_a, t_cdllist **stack_b, char *reason);
 void		splitfree(char **split);
 void		considersuicide(void *check, t_heap *heap);
 void		freeheap(t_heap *heap);
+void		sarra(t_cdllist **stack_a);
+void		rasarra(t_cdllist **stack_a);
+int			get_min_index(t_cdllist *tail, int val);
+int			get_distance(t_cdllist **stack, int index);
+void		sort_3(t_cdllist **stack_a);
+void		sort_4(t_cdllist **stack_a, t_cdllist **stack_b);
+void		sort_5(t_cdllist **stack_a, t_cdllist **stack_b);
 #endif
