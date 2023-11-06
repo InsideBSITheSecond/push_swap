@@ -122,5 +122,5 @@ psv/build/bin/visualizer : psv
 visualizer : psv/build/bin/visualizer
 	 ./psv/build/bin/visualizer
 
-# PHONY
+# PHONYd
 .PHONY : complexity checker_Mac checker_linux vg re all fclean visualizer clean dep exe
