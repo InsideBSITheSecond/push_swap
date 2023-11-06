@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/11/02 20:14:46 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/11/06 10:23:20 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,19 @@ void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 			pa(stack_a, stack_b);
 		i.x++;
 	}
+}
+
+void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
+{
+	int	size;
+
+	size = ft_cdllsize(*stack_a);
+	if (size == 2)
+		sa(stack_a, 0);
+	else if (size == 3)
+		sort_3(stack_a);
+	else if (size == 4)
+		sort_4(stack_a, stack_b);
+	else if (size == 5)
+		sort_5(stack_a, stack_b);
 }
