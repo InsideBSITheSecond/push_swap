@@ -1,0 +1,16 @@
+{
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/insidebsi/source/repos/push_swap",
+			"binaryPath": "/home/insidebsi/source/repos/push_swap/push_swap",
+			"binaryArgs": []
+		}
+	],
+	"makefile.buildLog": "build.log",
+	"files.associations": {
+		"algorithm": "c",
+		"sstream": "c"
+	},
+	"files.eol": "\n",
+	"files.insertFinalNewline": false
+}
