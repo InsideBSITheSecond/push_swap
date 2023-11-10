@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/11/02 17:28:08 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:26:00 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_cdllist	*checkparse(int argc, char **argv)
 		while (split[++i])
 			splitted = 1;
 		if (i == 2)
-			considersuicide(NULL, &(t_heap){});
+			exit(0);
 		return (checkparse(i, split));
 	}
 	else
