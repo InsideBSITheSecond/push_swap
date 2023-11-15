@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:45:45 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/25 20:48:01 by insidebsi        ###   ########.fr       */
+/*   Updated: 2023/11/03 00:59:24 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	exec(t_cdllist **stack_a, t_cdllist **stack_b, char *line)
 		pb(stack_a, stack_b);
 	if (!(ft_strcmp(line, "ra\n")))
 		ra(stack_a, 0);
+	if (!(ft_strcmp(line, "sa\n")))
+		sa(stack_a, 0);
+	if (!(ft_strcmp(line, "rra\n")))
+		rra(stack_a, 0);
 }
 
 int	main(int argc, char **argv)

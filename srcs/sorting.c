@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 23:35:22 by insidebsi         #+#    #+#             */
-/*   Updated: 2023/10/27 16:35:18 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:23:20 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ void	compute_sort_ops(t_cdllist **stack_a, t_cdllist **stack_b)
 		simple(stack_a, stack_b);
 	else
 		radix(stack_a, stack_b);
-}
-
-/// @brief do simple sorting for stacks with less than 5 elements
-/// @param stack_a 
-/// @param stack_b 
-void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
-{
-	(void)stack_a;
-	(void)stack_b;
-	printf("let's pretend like we re sorting shit here... (argc < 5)\n");
 }
 
 /// @brief sorts base2 indexes using radix algorithm
@@ -63,4 +53,19 @@ void	radix(t_cdllist **stack_a, t_cdllist **stack_b)
 			pa(stack_a, stack_b);
 		i.x++;
 	}
+}
+
+void	simple(t_cdllist **stack_a, t_cdllist **stack_b)
+{
+	int	size;
+
+	size = ft_cdllsize(*stack_a);
+	if (size == 2)
+		sa(stack_a, 0);
+	else if (size == 3)
+		sort_3(stack_a);
+	else if (size == 4)
+		sort_4(stack_a, stack_b);
+	else if (size == 5)
+		sort_5(stack_a, stack_b);
 }
