@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2023/11/15 17:17:18 by llegrand         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:47:14 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,34 @@ t_cdllist	*checkparse(int argc, char **argv)
 	doillegalchecks(2, argv, 0);
 	exit(0);
 }
+/*t_cdllist	*checkparse(int argc, char **argv)
+{
+	static char	**split = NULL;
+	static char	*tmp = NULL;
+	static int	i = 0;
+	static int	splitted = 0;
+
+	if (argc > 2)
+	{
+		doillegalchecks(argc, argv, splitted);
+		return (parse(argc, argv, splitted));
+	}
+	else if (argc == 2 && !splitted)
+	{
+		tmp = ft_strjoin("./push_swap ", argv[1]);
+		considersuicide(tmp, &(t_heap){});
+		split = ft_split(tmp, ' ');
+		considersuicide(split, &(t_heap){.tmp = tmp});
+		free(tmp);
+		while (split[++i])
+			splitted = 1;
+		if (i == 2)
+			checkparse(argc, argv);
+		return (checkparse(i, split));
+	}
+	else
+		if (splitted)
+			doillegalchecks(2, argv, 0);
+		exit (0);
+}
+*/
