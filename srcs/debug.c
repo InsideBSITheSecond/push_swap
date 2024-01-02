@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:19:32 by llegrand          #+#    #+#             */
-/*   Updated: 2023/10/25 20:38:57 by insidebsi        ###   ########.fr       */
+/*   Updated: 2024/01/02 16:14:20 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	bruh(void *bruh)
 	//write(1, " | ", 3);
 void	print(void *lst)
 {
-	printf("%i | ", (int)(intptr_t)(((t_cdllist *)lst)->content));
+	ft_printf("%i | ", (int)(intptr_t)(((t_cdllist *)lst)->content));
 }
 
 // print all attributes of a cdll node
 void	printall(void *lst)
 {
-	printf("\n          %p\n", (t_cdllist *)lst);
-	printf("%p - %i (%i) - %p\n", ((t_cdllist *)lst)->prev,
+	ft_printf("\n          %p\n", (t_cdllist *)lst);
+	ft_printf("%p - %i (%i) - %p\n", ((t_cdllist *)lst)->prev,
 		(int)(intptr_t)(((t_cdllist *)lst)->content),
 		(int)(intptr_t)(((t_cdllist *)lst)->index),
 		((t_cdllist *)lst)->next);
