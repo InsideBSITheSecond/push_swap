@@ -6,7 +6,7 @@
 /*   By: insidebsi <insidebsi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:53:08 by llegrand          #+#    #+#             */
-/*   Updated: 2023/11/02 22:28:16 by insidebsi        ###   ########.fr       */
+/*   Updated: 2024/01/07 09:56:14 by insidebsi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	t_cdllist	*stack_a;
 	t_cdllist	*stack_b;
 
+	if (argc < 2)
+		return (0);
 	stack_a = checkparse(argc, argv);
 	stack_b = NULL;
 	considersuicide(stack_a, &(t_heap){.tmp = NULL});
