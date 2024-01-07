@@ -51,12 +51,12 @@ jobs:
       run: time ./push_swap 1 2 3 4 5 6 0 -1 -2 | ./checker 1 2 3 4 5 6 0 -1 -2
       continue-on-error: false
 
-    - name: numbers include a 0
+    - name: no arguments
       id: empty
       run: time ./push_swap
       continue-on-error: false
 
-    - name: numbers include a 0
+    - name: no arguments quoted
       id: emptyquote
       run: time ./push_swap ""
       continue-on-error: false
