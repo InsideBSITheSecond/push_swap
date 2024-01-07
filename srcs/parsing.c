@@ -6,7 +6,7 @@
 /*   By: llegrand <llegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:19:51 by llegrand          #+#    #+#             */
-/*   Updated: 2024/01/07 11:06:24 by llegrand         ###   ########.fr       */
+/*   Updated: 2024/01/07 12:47:21 by llegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	doillegalchecks(int argc, char **argv, int splttd)
 	i = 1;
 	while (i < argc)
 	{
-		if (!argv[i])
-			break ;
+		if (ft_strlen(argv[i]) == 0)
+			considersuicide(0, &(t_heap){.split = argv, .splitted = splttd});
 		considersuicide((void *)(intptr_t)
 			!(!ft_strcontsowpref(argv[i], "0123456789", '+')
 				&& !ft_strcontsowpref(argv[i], "0123456789", '-')),
