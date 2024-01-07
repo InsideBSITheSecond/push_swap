@@ -23,7 +23,7 @@ jobs:
       continue-on-error: true
       
     - name: check dupe error & mark success
-      run: exit 0
+      run: ./push_swap 2 6 9 4 7 9
       continue-on-error: true
 
     - name: 25 positives
